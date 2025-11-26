@@ -1,0 +1,26 @@
+[Unit]
+Description=Pokopini Gunicorn daemon
+After=network.target
+
+[Service]
+Type=notify
+User=www-data
+Group=www-data
+RuntimeDirectory=gunicorn
+WorkingDirectory=/var/www/pokopini/backend
+Environment="PATH=/var/www/pokopini/venv/bin"
+EnvironmentFile=/var/www/pokopini/backend/.env
+ExecStart=/var/www/pokopini/venv/bin/gunicorn \
+          --workers 3 \
+          --bind unix:/run/gunicorn/pokopini.sock \
+          --timeout 120 \
+          --access-logfile /var/log/gunicorn/access.log \
+          --error-logfile /var/log/gunicorn/error.log \
+          pokopini.wsgi:application
+ExecReload=/bin/kill -s HUP $MAINPID
+KillMode=mixed
+TimeoutStopSec=5
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

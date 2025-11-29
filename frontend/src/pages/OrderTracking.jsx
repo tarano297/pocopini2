@@ -8,12 +8,12 @@ const OrderTracking = () => {
     <div className="min-h-screen bg-gradient-to-br from-pastel-pink via-white to-pastel-blue py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         {/* Header Section */}
-        <div className="text-center mb-12 animate-fade-in">
+        <div className="text-center mb-12 animate-fade-in-down">
           <div className="inline-block mb-6">
-            <div className="relative">
-              <div className="absolute inset-0 bg-coral blur-2xl opacity-20 animate-pulse"></div>
+            <div className="relative animate-float">
+              <div className="absolute inset-0 bg-coral blur-2xl opacity-20 animate-pulse-slow"></div>
               <svg 
-                className="w-24 h-24 mx-auto text-coral relative z-10" 
+                className="w-24 h-24 mx-auto text-coral relative z-10 animate-bounce-slow" 
                 fill="none" 
                 stroke="currentColor" 
                 viewBox="0 0 24 24"
@@ -27,28 +27,28 @@ const OrderTracking = () => {
               </svg>
             </div>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 animate-slide-up">
             پیگیری سفارشات
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto animate-slide-up-delay">
             برای پیگیری وضعیت سفارش خود، فاکتور خرید را به صفحه اینستاگرام ما ارسال کنید
           </p>
         </div>
 
         {/* Main Card */}
-        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden transform transition-all duration-300 hover:shadow-3xl">
+        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden transform transition-all duration-300 hover:shadow-3xl animate-scale-in">
           {/* Decorative Top Border */}
-          <div className="h-2 bg-gradient-to-r from-coral via-primary to-pastel-purple"></div>
+          <div className="h-2 bg-gradient-to-r from-coral via-primary to-pastel-purple animate-gradient"></div>
           
           <div className="p-8 md:p-12">
             {/* Steps Section */}
             <div className="grid md:grid-cols-3 gap-8 mb-12">
               {/* Step 1 */}
-              <div className="text-center group">
+              <div className="text-center group animate-fade-in-up" style={{animationDelay: '0.2s'}}>
                 <div className="relative inline-block mb-4">
-                  <div className="absolute inset-0 bg-pastel-pink rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity"></div>
-                  <div className="relative bg-gradient-to-br from-pastel-pink to-coral w-20 h-20 rounded-full flex items-center justify-center mx-auto shadow-lg">
-                    <span className="text-3xl">📋</span>
+                  <div className="absolute inset-0 bg-pastel-pink rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity animate-pulse-slow"></div>
+                  <div className="relative bg-gradient-to-br from-pastel-pink to-coral w-20 h-20 rounded-full flex items-center justify-center mx-auto shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                    <span className="text-3xl animate-wiggle">📋</span>
                   </div>
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">مرحله اول</h3>
@@ -56,11 +56,11 @@ const OrderTracking = () => {
               </div>
 
               {/* Step 2 */}
-              <div className="text-center group">
+              <div className="text-center group animate-fade-in-up" style={{animationDelay: '0.4s'}}>
                 <div className="relative inline-block mb-4">
-                  <div className="absolute inset-0 bg-primary rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity"></div>
-                  <div className="relative bg-gradient-to-br from-primary to-pastel-purple w-20 h-20 rounded-full flex items-center justify-center mx-auto shadow-lg">
-                    <span className="text-3xl">📸</span>
+                  <div className="absolute inset-0 bg-primary rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity animate-pulse-slow"></div>
+                  <div className="relative bg-gradient-to-br from-primary to-pastel-purple w-20 h-20 rounded-full flex items-center justify-center mx-auto shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                    <span className="text-3xl animate-wiggle">📸</span>
                   </div>
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">مرحله دوم</h3>
@@ -69,11 +69,11 @@ const OrderTracking = () => {
               </div>
 
               {/* Step 3 */}
-              <div className="text-center group">
+              <div className="text-center group animate-fade-in-up" style={{animationDelay: '0.6s'}}>
                 <div className="relative inline-block mb-4">
-                  <div className="absolute inset-0 bg-pastel-purple rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity"></div>
-                  <div className="relative bg-gradient-to-br from-pastel-purple to-coral w-20 h-20 rounded-full flex items-center justify-center mx-auto shadow-lg">
-                    <span className="text-3xl">📱</span>
+                  <div className="absolute inset-0 bg-pastel-purple rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity animate-pulse-slow"></div>
+                  <div className="relative bg-gradient-to-br from-pastel-purple to-coral w-20 h-20 rounded-full flex items-center justify-center mx-auto shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                    <span className="text-3xl animate-wiggle">📱</span>
                   </div>
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">مرحله سوم</h3>
@@ -127,25 +127,25 @@ const OrderTracking = () => {
             </div>
 
             {/* Info Box */}
-            <div className="mt-12 bg-gradient-to-r from-pastel-blue/30 to-pastel-green/30 rounded-2xl p-6 border border-pastel-blue/50">
+            <div className="mt-12 bg-gradient-to-r from-pastel-blue/30 to-pastel-green/30 rounded-2xl p-6 border border-pastel-blue/50 animate-fade-in-up" style={{animationDelay: '0.8s'}}>
               <div className="flex items-start">
                 <div className="flex-shrink-0">
-                  <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 text-primary animate-pulse-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
                 <div className="mr-4">
                   <h4 className="text-base font-bold text-gray-900 mb-2">نکات مهم:</h4>
                   <ul className="space-y-2 text-sm text-gray-700">
-                    <li className="flex items-start">
+                    <li className="flex items-start animate-slide-in-right" style={{animationDelay: '1s'}}>
                       <span className="text-coral ml-2">•</span>
                       <span>شماره سفارش خود را در پیام ذکر کنید</span>
                     </li>
-                    <li className="flex items-start">
+                    <li className="flex items-start animate-slide-in-right" style={{animationDelay: '1.1s'}}>
                       <span className="text-coral ml-2">•</span>
                       <span>تصویر فاکتور باید واضح و خوانا باشد</span>
                     </li>
-                    <li className="flex items-start">
+                    <li className="flex items-start animate-slide-in-right" style={{animationDelay: '1.2s'}}>
                       <span className="text-coral ml-2">•</span>
                       <span>پاسخگویی 24 ساعته</span>
                     </li>
@@ -157,12 +157,13 @@ const OrderTracking = () => {
         </div>
 
         {/* Additional Help Section */}
-        <div className="mt-12 text-center">
+        <div className="mt-12 text-center animate-fade-in" style={{animationDelay: '1s'}}>
           <p className="text-gray-600 mb-4">سوال یا مشکلی دارید؟</p>
           <div className="flex flex-wrap justify-center gap-4">
             <a 
               href="/contact" 
-              className="inline-flex items-center px-6 py-3 bg-white text-gray-700 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:text-coral"
+              className="inline-flex items-center px-6 py-3 bg-white text-gray-700 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:text-coral hover:-translate-y-1 animate-fade-in-up" 
+              style={{animationDelay: '1.2s'}}
             >
               <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -171,7 +172,8 @@ const OrderTracking = () => {
             </a>
             <a 
               href="/faq" 
-              className="inline-flex items-center px-6 py-3 bg-white text-gray-700 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:text-coral"
+              className="inline-flex items-center px-6 py-3 bg-white text-gray-700 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:text-coral hover:-translate-y-1 animate-fade-in-up" 
+              style={{animationDelay: '1.3s'}}
             >
               <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -194,8 +196,164 @@ const OrderTracking = () => {
           }
         }
         
+        @keyframes fade-in-down {
+          from {
+            opacity: 0;
+            transform: translateY(-40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes fade-in-up {
+          from {
+            opacity: 0;
+            transform: translateY(40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes slide-up {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes slide-in-right {
+          from {
+            opacity: 0;
+            transform: translateX(-30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        
+        @keyframes scale-in {
+          from {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+        
+        @keyframes bounce-slow {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-5px);
+          }
+        }
+        
+        @keyframes wiggle {
+          0%, 100% {
+            transform: rotate(0deg);
+          }
+          25% {
+            transform: rotate(-5deg);
+          }
+          75% {
+            transform: rotate(5deg);
+          }
+        }
+        
+        @keyframes gradient {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+        
+        @keyframes pulse-slow {
+          0%, 100% {
+            opacity: 0.5;
+          }
+          50% {
+            opacity: 0.8;
+          }
+        }
+        
         .animate-fade-in {
-          animation: fade-in 0.6s ease-out;
+          animation: fade-in 0.6s ease-out forwards;
+          opacity: 0;
+        }
+        
+        .animate-fade-in-down {
+          animation: fade-in-down 0.8s ease-out forwards;
+        }
+        
+        .animate-fade-in-up {
+          animation: fade-in-up 0.6s ease-out forwards;
+          opacity: 0;
+        }
+        
+        .animate-slide-up {
+          animation: slide-up 0.8s ease-out 0.2s forwards;
+          opacity: 0;
+        }
+        
+        .animate-slide-up-delay {
+          animation: slide-up 0.8s ease-out 0.4s forwards;
+          opacity: 0;
+        }
+        
+        .animate-slide-in-right {
+          animation: slide-in-right 0.5s ease-out forwards;
+          opacity: 0;
+        }
+        
+        .animate-scale-in {
+          animation: scale-in 0.5s ease-out 0.3s forwards;
+        }
+        
+        .animate-float {
+          animation: float 3s ease-in-out infinite;
+        }
+        
+        .animate-bounce-slow {
+          animation: bounce-slow 2s ease-in-out infinite;
+        }
+        
+        .animate-wiggle {
+          animation: wiggle 2s ease-in-out infinite;
+        }
+        
+        .animate-gradient {
+          background-size: 200% 200%;
+          animation: gradient 3s ease infinite;
+        }
+        
+        .animate-pulse-slow {
+          animation: pulse-slow 3s ease-in-out infinite;
         }
         
         .bg-size-200 {

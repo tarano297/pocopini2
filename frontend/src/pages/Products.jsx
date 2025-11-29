@@ -24,7 +24,7 @@ const Products = () => {
       if (season) params.append('season', season);
       if (search) params.append('search', search);
 
-      const response = await api.get(`/products/products/?${params.toString()}`);
+      const response = await api.get(`/products/?${params.toString()}`);
       setProducts(response.data.results || response.data);
     } catch (error) {
       console.error('خطا در دریافت محصولات:', error);

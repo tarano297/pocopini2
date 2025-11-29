@@ -51,3 +51,39 @@
 .scrollbar-hide {
   scroll-behavior: smooth;
 }
+
+/* Print styles for invoice */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  
+  #invoice-content,
+  #invoice-content * {
+    visibility: visible;
+  }
+  
+  #invoice-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  
+  .print\:hidden {
+    display: none !important;
+  }
+  
+  /* Hide buttons and navigation during print */
+  button,
+  nav,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+  
+  /* Optimize for print */
+  @page {
+    margin: 1cm;
+  }
+}

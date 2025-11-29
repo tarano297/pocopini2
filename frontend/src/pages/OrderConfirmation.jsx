@@ -21,6 +21,109 @@ const OrderConfirmation = () => {
   // دریافت آدرس انتخاب شده از state
   const selectedAddressId = location.state?.addressId;
 
+  // تابع چاپ فاکتور
+  const handlePrint = () => {
+    window.print();
+  };
+
+  // تابع دانلود فاکتور به صورت PDF (ساده)
+  const handleDownload = () => {
+    // ایجاد محتوای HTML برای دانلود
+    const invoiceContent = `
+      <!DOCTYPE html>
+      <html dir="rtl" lang="fa">
+      <head>
+        <meta charset="UTF-8">
+        <title>فاکتور خرید - پوکوپینی</title>
+        <style>
+          body { font-family: Tahoma, Arial, sans-serif; padding: 20px; }
+          .header { text-align: center; border-bottom: 2px solid #333; padding-bottom: 10px; margin-bottom: 20px; }
+          .section { margin-bottom: 20px; }
+          .section-title { font-weight: bold; font-size: 16px; margin-bottom: 10px; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
+          table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+          th, td { border: 1px solid #ddd; padding: 8px; text-align: right; }
+          th { background-color: #f2f2f2; }
+          .total { font-size: 18px; font-weight: bold; text-align: left; }
+        </style>
+      </head>
+      <body>
+        <div class="header">
+          <h1>فاکتور خرید</h1>
+          <p>فروشگاه آنلاین پوکوپینی</p>
+          <p>تاریخ: ${new Date().toLocaleDateString('fa-IR')}</p>
+        </div>
+        
+        <div class="section">
+          <div class="section-title">اطلاعات گیرنده</div>
+          <p><strong>نام:</strong> ${address?.full_name || '-'}</p>
+          <p><strong>شماره تماس:</strong> ${address?.phone_number || '-'}</p>
+          <p><strong>آدرس:</strong> ${address?.province || ''} - ${address?.city || ''} - ${address?.address_line || ''}</p>
+          <p><strong>کد پستی:</strong> ${address?.postal_code || '-'}</p>
+        </div>
+        
+        <div class="section">
+          <div class="section-title">محصولات</div>
+          <table>
+            <thead>
+              <tr>
+                <th>ردیف</th>
+                <th>نام محصول</th>
+                <th>تعداد</th>
+                <th>قیمت واحد</th>
+                <th>قیمت کل</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${items.map((item, index) => `
+                <tr>
+                  <td>${index + 1}</td>
+                  <td>${item.product?.name || '-'}</td>
+                  <td>${item.quantity}</td>
+                  <td>${priceUtils.formatPersianPrice(item.product?.price || 0)}</td>
+                  <td>${priceUtils.formatPersianPrice((item.product?.price || 0) * item.quantity)}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="section">
+          <table>
+            <tr>
+              <td><strong>قیمت کالاها:</strong></td>
+              <td class="total">${priceUtils.formatPersianPrice(totalPrice)}</td>
+            </tr>
+            <tr>
+              <td><strong>هزینه ارسال:</strong></td>
+              <td class="total">${priceUtils.formatPersianPrice(getShippingCost())}</td>
+            </tr>
+            <tr style="background-color: #f9f9f9;">
+              <td><strong>مجموع قابل پرداخت:</strong></td>
+              <td class="total" style="color: green; font-size: 20px;">${priceUtils.formatPersianPrice(getFinalTotal())}</td>
+            </tr>
+          </table>
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #ccc;">
+          <p>با تشکر از خرید شما</p>
+          <p>www.pokopini.com</p>
+        </div>
+      </body>
+      </html>
+    `;
+
+    // ایجاد Blob و دانلود
+    const blob = new Blob([invoiceContent], { type: 'text/html' });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `invoice-${Date.now()}.html`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
+  };
+
   useEffect(() => {
     // اگر در حال پردازش پرداخت هستیم، از redirect جلوگیری کن
     if (isProcessingPayment) {
@@ -138,10 +241,32 @@ const OrderConfirmation = () => {
           )}
 
           {/* فاکتور سفارش */}
-          <div className="bg-white rounded-lg shadow-md overflow-hidden mb-6">
+          <div className="bg-white rounded-lg shadow-md overflow-hidden mb-6" id="invoice-content">
             {/* هدر فاکتور */}
-            <div className="bg-blue-600 text-white px-6 py-4">
+            <div className="bg-blue-600 text-white px-6 py-4 flex justify-between items-center">
               <h2 className="text-xl font-semibold">فاکتور خرید</h2>
+              <div className="flex gap-2 print:hidden">
+                <button
+                  onClick={handlePrint}
+                  className="bg-white text-blue-600 px-4 py-2 rounded-lg font-medium hover:bg-blue-50 transition-colors flex items-center gap-2"
+                  title="چاپ فاکتور"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                  </svg>
+                  چاپ
+                </button>
+                <button
+                  onClick={handleDownload}
+                  className="bg-white text-blue-600 px-4 py-2 rounded-lg font-medium hover:bg-blue-50 transition-colors flex items-center gap-2"
+                  title="دانلود فاکتور"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                  دانلود
+                </button>
+              </div>
             </div>
 
             <div className="p-6">

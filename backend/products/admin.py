@@ -18,20 +18,20 @@ class ProductAdmin(admin.ModelAdmin):
     پنل ادمین برای مدیریت محصولات
     """
     list_display = [
-        'name', 'category', 'season',
+        'name', 'product_code', 'category', 'season',
         'price', 'variants_count', 'is_active', 'created_at'
     ]
     list_filter = ['category', 'season', 'is_active', 'created_at']
-    search_fields = ['name', 'description']
+    search_fields = ['name', 'product_code', 'description']
     ordering = ['-created_at']
-    readonly_fields = ['created_at', 'updated_at']
+    readonly_fields = ['product_code', 'created_at', 'updated_at']
     list_editable = ['is_active', 'price']
     list_per_page = 20
     inlines = [ProductVariantInline]
     
     fieldsets = (
         ('اطلاعات اصلی', {
-            'fields': ('name', 'description', 'image')
+            'fields': ('name', 'product_code', 'description', 'image')
         }),
         ('دسته‌بندی', {
             'fields': ('category', 'season')

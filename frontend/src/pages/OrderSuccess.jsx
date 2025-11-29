@@ -133,6 +133,11 @@ const OrderSuccess = () => {
                               <div className="font-medium text-gray-900">
                                 {item.product?.name || 'محصول'}
                               </div>
+                              {item.product?.product_code && (
+                                <div className="text-xs text-gray-500">
+                                  کد محصول: {item.product.product_code}
+                                </div>
+                              )}
                               <div className="text-sm text-gray-600">
                                 تعداد: {priceUtils.toPersianDigits(item.quantity)} × {priceUtils.formatPersianPrice(item.price)}
                               </div>

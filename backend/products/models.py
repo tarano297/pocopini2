@@ -20,6 +20,13 @@ class Product(models.Model):
     ]
     
     name = models.CharField(max_length=200, verbose_name='نام محصول')
+    product_code = models.CharField(
+        max_length=50,
+        unique=True,
+        blank=True,
+        null=True,
+        verbose_name='کد محصول'
+    )
     description = models.TextField(verbose_name='توضیحات')
     price = models.DecimalField(
         max_digits=10,
@@ -59,6 +66,16 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def save(self, *args, **kwargs):
+        # تولید کد محصول خودکار اگر وجود نداشته باشد
+        if not self.product_code:
+            # استفاده از ID برای تولید کد یکتا
+            super().save(*args, **kwargs)
+            self.product_code = f"PKP-{self.id:05d}"
+            super().save(update_fields=['product_code'])
+        else:
+            super().save(*args, **kwargs)
 
     @property
     def is_in_stock(self):

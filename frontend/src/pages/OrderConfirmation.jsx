@@ -67,7 +67,7 @@ const OrderConfirmation = () => {
             <thead>
               <tr>
                 <th>ردیف</th>
-                <th>نام محصول</th>
+                <th>نام محصول / کد</th>
                 <th>تعداد</th>
                 <th>قیمت واحد</th>
                 <th>قیمت کل</th>
@@ -77,7 +77,10 @@ const OrderConfirmation = () => {
               ${items.map((item, index) => `
                 <tr>
                   <td>${index + 1}</td>
-                  <td>${item.product?.name || '-'}</td>
+                  <td>
+                    ${item.product?.name || '-'}
+                    ${item.product?.product_code ? `<br><small style="color: #666;">کد: ${item.product.product_code}</small>` : ''}
+                  </td>
                   <td>${item.quantity}</td>
                   <td>${priceUtils.formatPersianPrice(item.product?.price || 0)}</td>
                   <td>${priceUtils.formatPersianPrice((item.product?.price || 0) * item.quantity)}</td>
@@ -288,6 +291,11 @@ const OrderConfirmation = () => {
                         <div className="font-medium text-gray-900 mb-1">
                           {item.product?.name}
                         </div>
+                        {item.product?.product_code && (
+                          <div className="text-xs text-gray-500 mb-1">
+                            کد محصول: {item.product.product_code}
+                          </div>
+                        )}
                         <div className="text-sm text-gray-600">
                           تعداد: {priceUtils.toPersianDigits(item.quantity)}
                         </div>

@@ -25,18 +25,18 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white sticky top-0 z-50 shadow-sm">
+    <nav className="bg-white sticky top-0 z-50 shadow-lg border-b border-gray-100">
       {/* Top Search Bar */}
-      <div className="bg-gradient-to-r from-coral to-primary py-2">
+      <div className="bg-gradient-to-r from-coral via-primary to-pastel-purple py-2.5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <form onSubmit={handleSearch} className="max-w-2xl mx-auto">
             <div className="relative">
               <input
                 type="text"
-                placeholder="جستجوی محصولات..."
+                placeholder="دنبال چه محصولی می‌گردید؟ 🔍"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-2 text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-white/50 transition-all"
+                className="w-full pl-12 pr-4 py-2.5 text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-white/50 transition-all shadow-sm"
               />
               <button
                 type="submit"
@@ -57,16 +57,18 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center space-x-8 space-x-reverse flex-1">
             <a 
               href="/" 
-              className="text-gray-700 hover:text-coral text-sm font-medium transition-colors"
+              className="relative text-gray-700 hover:text-coral text-sm font-semibold transition-colors group"
             >
               خانه
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-coral group-hover:w-full transition-all duration-300"></span>
             </a>
             <div className="relative group">
-              <button className="text-gray-700 hover:text-coral text-sm font-medium transition-colors flex items-center">
+              <button className="relative text-gray-700 hover:text-coral text-sm font-semibold transition-colors flex items-center">
                 محصولات
-                <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 mr-1.5 transform group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-coral group-hover:w-full transition-all duration-300"></span>
               </button>
               {/* منوی کشویی */}
               <div className="absolute right-0 mt-2 w-[500px] bg-white rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 border border-gray-100">
@@ -140,15 +142,17 @@ const Navbar = () => {
             </div>
             <a 
               href="/order-tracking" 
-              className="text-gray-700 hover:text-coral text-sm font-medium transition-colors"
+              className="relative text-gray-700 hover:text-coral text-sm font-semibold transition-colors group"
             >
               پیگیری سفارشات
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-coral group-hover:w-full transition-all duration-300"></span>
             </a>
             <a 
               href="/about" 
-              className="text-gray-700 hover:text-coral text-sm font-medium transition-colors"
+              className="relative text-gray-700 hover:text-coral text-sm font-semibold transition-colors group"
             >
               درباره ما
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-coral group-hover:w-full transition-all duration-300"></span>
             </a>
           </div>
 
@@ -166,12 +170,12 @@ const Navbar = () => {
           {/* منوی سمت چپ */}
           <div className="hidden lg:flex items-center space-x-6 space-x-reverse flex-1 justify-end">
             {/* سبد خرید */}
-            <a href="/cart" className="relative p-2 text-gray-700 hover:text-coral transition-colors">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <a href="/cart" className="relative p-2.5 text-gray-700 hover:text-coral transition-all hover:bg-coral/10 rounded-full group">
+              <svg className="w-5 h-5 transform group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
               </svg>
               {itemCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-coral text-white text-xs font-bold rounded-full h-4 w-4 flex items-center justify-center text-[10px]">
+                <span className="absolute -top-1 -right-1 bg-gradient-to-r from-coral to-primary text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center text-[10px] animate-pulse shadow-lg">
                   {itemCount > 9 ? '9+' : itemCount}
                 </span>
               )}
@@ -253,7 +257,7 @@ const Navbar = () => {
                 </a>
                 <a
                   href="/register"
-                  className="bg-coral text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-primary transition-all duration-300 shadow-sm hover:shadow-md"
+                  className="bg-gradient-to-r from-coral to-primary text-white px-6 py-2.5 rounded-full text-sm font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"
                 >
                   ثبت‌نام
                 </a>

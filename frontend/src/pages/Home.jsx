@@ -16,6 +16,11 @@ const Home = () => {
 
   useEffect(() => {
     loadFeaturedProducts();
+    // بارگذاری نظرات از localStorage
+    const savedReviews = localStorage.getItem('userReviews');
+    if (savedReviews) {
+      setUserReviews(JSON.parse(savedReviews));
+    }
   }, []);
 
   const loadFeaturedProducts = async () => {
@@ -50,8 +55,13 @@ const Home = () => {
       date: new Date().toLocaleDateString('fa-IR')
     };
     
-    setUserReviews([newReview, ...userReviews]);
-    alert('نظر شما با موفقیت ثبت شد!');
+    const updatedReviews = [newReview, ...userReviews];
+    setUserReviews(updatedReviews);
+    
+    // ذخیره در localStorage
+    localStorage.setItem('userReviews', JSON.stringify(updatedReviews));
+    
+    alert('نظر شما با موفقیت ثبت شد! 🎉');
     
     // ریست کردن فرم
     setRating(0);
@@ -520,8 +530,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Customer Reviews Section */}
-      <section className="py-16 md:py-24 bg-white">
+      {/* Customer Reviews Section - Carousel Style */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
@@ -532,82 +542,131 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* نظرات کاربران جدید */}
-            {userReviews.map((review, index) => (
-              <div key={review.id} className="bg-gradient-to-br from-purple-50 to-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 animate-slide-up border-2 border-purple-200">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                      {review.name.charAt(0)}
+          {/* Scrollable Reviews Container */}
+          <div className="relative">
+            {/* Scroll Hint - Left */}
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-l from-transparent to-white z-10 pointer-events-none hidden md:block"></div>
+            
+            {/* Scroll Hint - Right */}
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-r from-transparent to-white z-10 pointer-events-none hidden md:block"></div>
+
+            {/* Reviews Carousel */}
+            <div className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide" style={{scrollbarWidth: 'none', msOverflowStyle: 'none'}}>
+              {/* نظرات کاربران جدید */}
+              {userReviews.map((review, index) => (
+                <div 
+                  key={review.id} 
+                  className="flex-shrink-0 w-[85%] sm:w-[400px] snap-center"
+                >
+                  <div className="bg-gradient-to-br from-purple-50 to-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-purple-200 h-full transform hover:scale-105">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center">
+                        <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                          {review.name.charAt(0)}
+                        </div>
+                        <div className="mr-3">
+                          <h4 className="font-bold text-gray-900 text-lg">{review.name}</h4>
+                          <div className="flex text-accent text-lg">
+                            {'⭐'.repeat(review.rating)}
+                          </div>
+                        </div>
+                      </div>
+                      <span className="text-xs text-purple-600 font-semibold bg-purple-100 px-3 py-1 rounded-full animate-pulse">جدید</span>
+                    </div>
+                    <p className="text-gray-700 leading-relaxed text-base mb-4">
+                      "{review.comment}"
+                    </p>
+                    <div className="flex items-center justify-between text-xs text-gray-500 pt-4 border-t border-gray-200">
+                      <span>{review.date}</span>
+                      <span className="text-purple-600">✓ خرید تایید شده</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+              {/* Review 1 */}
+              <div className="flex-shrink-0 w-[85%] sm:w-[400px] snap-center">
+                <div className="bg-gradient-to-br from-pastel-green to-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 h-full transform hover:scale-105">
+                  <div className="flex items-center mb-4">
+                    <div className="w-14 h-14 bg-gradient-to-br from-coral to-primary rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                      س
                     </div>
                     <div className="mr-3">
-                      <h4 className="font-bold text-gray-900">{review.name}</h4>
-                      <div className="flex text-accent">
-                        {'⭐'.repeat(review.rating)}
+                      <h4 className="font-bold text-gray-900 text-lg">سارا احمدی</h4>
+                      <div className="flex text-accent text-lg">
+                        {'⭐'.repeat(5)}
                       </div>
                     </div>
                   </div>
-                  <span className="text-xs text-purple-600 font-semibold bg-purple-100 px-2 py-1 rounded-full">جدید</span>
-                </div>
-                <p className="text-gray-700 leading-relaxed">
-                  "{review.comment}"
-                </p>
-                <p className="text-xs text-gray-500 mt-3">{review.date}</p>
-              </div>
-            ))}
-
-            {/* Review 1 */}
-            <div className="bg-gradient-to-br from-pastel-green to-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 animate-slide-up">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-coral to-primary rounded-full flex items-center justify-center text-white font-bold text-lg">
-                  س
-                </div>
-                <div className="mr-3">
-                  <h4 className="font-bold text-gray-900">سارا احمدی</h4>
-                  <div className="flex text-accent">
-                    {'⭐'.repeat(5)}
+                  <p className="text-gray-700 leading-relaxed text-base mb-4">
+                    "کیفیت لباس‌ها عالی بود و پارچه‌هاش خیلی نرم و راحت. بچه‌م خیلی راحت بود و پوستش حساسیت نگرفت. قطعاً دوباره خرید می‌کنم!"
+                  </p>
+                  <div className="flex items-center justify-between text-xs text-gray-500 pt-4 border-t border-gray-200">
+                    <span>۱۴۰۲/۰۸/۱۵</span>
+                    <span className="text-green-600">✓ خرید تایید شده</span>
                   </div>
                 </div>
               </div>
-              <p className="text-gray-700 leading-relaxed">
-                "کیفیت لباس‌ها عالی بود و پارچه‌هاش خیلی نرم و راحت. بچه‌م خیلی راحت بود و پوستش حساسیت نگرفت. قطعاً دوباره خرید می‌کنم!"
-              </p>
+
+              {/* Review 2 */}
+              <div className="flex-shrink-0 w-[85%] sm:w-[400px] snap-center">
+                <div className="bg-gradient-to-br from-pastel-pink to-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 h-full transform hover:scale-105">
+                  <div className="flex items-center mb-4">
+                    <div className="w-14 h-14 bg-gradient-to-br from-accent to-cream rounded-full flex items-center justify-center text-gray-900 font-bold text-xl shadow-lg">
+                      م
+                    </div>
+                    <div className="mr-3">
+                      <h4 className="font-bold text-gray-900 text-lg">مریم رضایی</h4>
+                      <div className="flex text-accent text-lg">
+                        {'⭐'.repeat(5)}
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-gray-700 leading-relaxed text-base mb-4">
+                    "ارسال سریع و بسته‌بندی عالی. مدل‌ها خیلی شیک و متنوع بودن. قیمت‌ها هم نسبت به کیفیت خیلی مناسب بود. ممنون از تیم پوکوپینی 💕"
+                  </p>
+                  <div className="flex items-center justify-between text-xs text-gray-500 pt-4 border-t border-gray-200">
+                    <span>۱۴۰۲/۰۹/۰۲</span>
+                    <span className="text-green-600">✓ خرید تایید شده</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Review 3 */}
+              <div className="flex-shrink-0 w-[85%] sm:w-[400px] snap-center">
+                <div className="bg-gradient-to-br from-cream/30 to-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 h-full transform hover:scale-105">
+                  <div className="flex items-center mb-4">
+                    <div className="w-14 h-14 bg-gradient-to-br from-success to-pastel-green rounded-full flex items-center justify-center text-gray-900 font-bold text-xl shadow-lg">
+                      ز
+                    </div>
+                    <div className="mr-3">
+                      <h4 className="font-bold text-gray-900 text-lg">زهرا کریمی</h4>
+                      <div className="flex text-accent text-lg">
+                        {'⭐'.repeat(5)}
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-gray-700 leading-relaxed text-base mb-4">
+                    "سایت خیلی راحت و کاربردی بود. پشتیبانی هم عالی و سریع جواب میدن. لباس‌ها دقیقاً مثل عکس بودن. خیلی راضی هستم 🌟"
+                  </p>
+                  <div className="flex items-center justify-between text-xs text-gray-500 pt-4 border-t border-gray-200">
+                    <span>۱۴۰۲/۰۹/۱۰</span>
+                    <span className="text-green-600">✓ خرید تایید شده</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            {/* Review 2 */}
-            <div className="bg-gradient-to-br from-pastel-pink to-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 animate-slide-up" style={{animationDelay: '0.1s'}}>
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-accent to-cream rounded-full flex items-center justify-center text-gray-900 font-bold text-lg">
-                  م
-                </div>
-                <div className="mr-3">
-                  <h4 className="font-bold text-gray-900">مریم رضایی</h4>
-                  <div className="flex text-accent">
-                    {'⭐'.repeat(5)}
-                  </div>
-                </div>
-              </div>
-              <p className="text-gray-700 leading-relaxed">
-                "ارسال سریع و بسته‌بندی عالی. مدل‌ها خیلی شیک و متنوع بودن. قیمت‌ها هم نسبت به کیفیت خیلی مناسب بود. ممنون از تیم پوکوپینی 💕"
-              </p>
-            </div>
-
-            {/* Review 3 */}
-            <div className="bg-gradient-to-br from-cream/30 to-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 animate-slide-up" style={{animationDelay: '0.2s'}}>
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-success to-pastel-green rounded-full flex items-center justify-center text-gray-900 font-bold text-lg">
-                  ز
-                </div>
-                <div className="mr-3">
-                  <h4 className="font-bold text-gray-900">زهرا کریمی</h4>
-                  <div className="flex text-accent">
-                    {'⭐'.repeat(5)}
-                  </div>
-                </div>
-              </div>
-              <p className="text-gray-700 leading-relaxed">
-                "سایت خیلی راحت و کاربردی بود. پشتیبانی هم عالی و سریع جواب میدن. لباس‌ها دقیقاً مثل عکس بودن. خیلی راضی هستم 🌟"
+            {/* Scroll Instruction */}
+            <div className="text-center mt-6">
+              <p className="text-sm text-gray-500 flex items-center justify-center gap-2">
+                <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+                </svg>
+                برای مشاهده نظرات بیشتر به چپ و راست بکشید
+                <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
               </p>
             </div>
           </div>

@@ -117,19 +117,30 @@ const Cart = () => {
                       <div className="flex items-start space-x-4 space-x-reverse">
                         {/* تصویر محصول */}
                         <div className="flex-shrink-0">
-                          <img
-                            src={item.product?.image ? imageUtils.getProductImageUrl(item.product) : imageUtils.getPlaceholder()}
-                            alt={item.product?.name || 'محصول'}
-                            className="w-20 h-20 object-cover rounded-md bg-gray-100"
-                            onError={imageUtils.handleImageError}
-                          />
+                          {item.product?.id ? (
+                            <a href={`/product/${item.product.id}`} className="block">
+                              <img
+                                src={item.product?.image ? imageUtils.getProductImageUrl(item.product) : imageUtils.getPlaceholder()}
+                                alt={item.product?.name || 'محصول'}
+                                className="w-20 h-20 object-cover rounded-md bg-gray-100 hover:opacity-80 transition-opacity cursor-pointer"
+                                onError={imageUtils.handleImageError}
+                              />
+                            </a>
+                          ) : (
+                            <img
+                              src={item.product?.image ? imageUtils.getProductImageUrl(item.product) : imageUtils.getPlaceholder()}
+                              alt={item.product?.name || 'محصول'}
+                              className="w-20 h-20 object-cover rounded-md bg-gray-100"
+                              onError={imageUtils.handleImageError}
+                            />
+                          )}
                         </div>
 
                         {/* اطلاعات محصول */}
                         <div className="flex-1 min-w-0">
                           <h3 className="text-lg font-medium text-gray-900 mb-1">
                             {item.product?.id ? (
-                              <a href={`/products/${item.product.id}`} className="hover:text-blue-600">
+                              <a href={`/product/${item.product.id}`} className="hover:text-coral transition-colors">
                                 {item.product?.name || 'محصول'}
                               </a>
                             ) : (

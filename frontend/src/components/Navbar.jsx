@@ -150,7 +150,7 @@ const Navbar = () => {
           <div className="flex items-center justify-center flex-shrink-0">
             <a href="/" className="flex items-center">
               <img 
-                src="/logo-pokopini.svg" 
+                src="/images/لوگو.jpg" 
                 alt="پوکوپینی" 
                 className="h-12 w-auto"
               />

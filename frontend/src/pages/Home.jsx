@@ -170,12 +170,6 @@ const Home = () => {
                   <svg className="w-5 h-5 text-green-500 ml-2" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  ارسال رایگان
-                </div>
-                <div className="flex items-center">
-                  <svg className="w-5 h-5 text-green-500 ml-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
                   ضمانت بازگشت
                 </div>
                 <div className="flex items-center">
@@ -499,8 +493,8 @@ const Home = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">ارسال سریع</h3>
-              <p className="text-gray-600 text-sm">ارسال رایگان بالای ۵۰۰ هزار تومان</p>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">ارسال رایگان بالای خرید ۵ میلیون تومان</h3>
+              <p className="text-gray-600 text-sm">ارسال سریع و مطمئن</p>
             </div>
 
             <div className="text-center animate-slide-up" style={{animationDelay: '0.3s'}}>

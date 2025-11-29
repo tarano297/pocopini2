@@ -14,11 +14,13 @@ const Footer = memo(() => {
           {/* لوگو و توضیحات */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center mb-6">
-              <img 
-                src="/logo-pokopini.svg" 
-                alt="پوکوپینی" 
-                className="h-14 w-auto filter brightness-0 invert"
-              />
+              <div className="bg-white rounded-full p-2 shadow-lg">
+                <img 
+                  src="/images/لوگو.jpg" 
+                  alt="پوکوپینی" 
+                  className="h-14 w-14 rounded-full object-cover"
+                />
+              </div>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed text-lg">
               پوکوپینی، فروشگاه آنلاین تخصصی لباس کودک با بهترین کیفیت و قیمت مناسب. ما با عشق و دقت، بهترین‌ها را برای فرشته‌های کوچک شما انتخاب می‌کنیم.

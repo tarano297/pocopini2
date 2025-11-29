@@ -4,7 +4,8 @@ import { useCart } from '../contexts/CartContext';
 import api from '../services/api';
 import { LoadingSpinner, ErrorMessage } from '../components';
 import ProductReviews from '../components/ProductReviews';
-import { priceUtils, imageUtils } from '../utils';
+import { priceUtils, imageUtils, recentlyViewedUtils } from '../utils';
+import { ShareButton } from '../components';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -46,6 +47,13 @@ const ProductDetail = () => {
     setIsFavorite(favorites.includes(parseInt(id)));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
+
+  // افزودن محصول به recently viewed
+  useEffect(() => {
+    if (product) {
+      recentlyViewedUtils.addProduct(product);
+    }
+  }, [product]);
 
   const handleAddToCart = async () => {
     if (!selectedSize || !selectedColor) {
@@ -327,7 +335,7 @@ const ProductDetail = () => {
                   )}
                 </button>
                 
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-3 gap-3">
                   <button
                     onClick={() => navigate('/cart')}
                     className="bg-white border-2 border-coral text-coral py-3 px-6 rounded-full font-bold hover:bg-coral hover:text-white transition-all duration-300 flex items-center justify-center gap-2"
@@ -350,6 +358,7 @@ const ProductDetail = () => {
                     </svg>
                     {isFavorite ? 'حذف از علاقه‌مندی' : 'علاقه‌مندی'}
                   </button>
+                  <ShareButton product={product} />
                 </div>
               </div>
 

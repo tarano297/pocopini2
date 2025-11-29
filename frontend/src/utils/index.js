@@ -3,6 +3,7 @@ export { default as dateUtils } from './dateUtils';
 export { default as priceUtils } from './priceUtils';
 export { default as numberUtils } from './numberUtils';
 export { default as imageUtils } from './imageUtils';
+export { default as recentlyViewedUtils } from './recentlyViewed';
 export * from './errorUtils';
 
 // توابع کمکی اضافی

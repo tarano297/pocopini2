@@ -11,3 +11,8 @@ export { default as ErrorBoundary, withErrorBoundary } from './ErrorBoundary';
 export { default as Toast, ToastProvider, useToast, NetworkErrorToast, TOAST_TYPES } from './Toast';
 export { default as LazyImage } from './LazyImage';
 export { default as LazyRoute, withLazyLoading } from './LazyRoute';
+export { default as WelcomePopup } from './WelcomePopup';
+export { default as ShareButton } from './ShareButton';
+export { default as RecentlyViewed } from './RecentlyViewed';
+export { default as WhatsAppButton } from './WhatsAppButton';
+export { default as ScrollAnimation } from './ScrollAnimation';

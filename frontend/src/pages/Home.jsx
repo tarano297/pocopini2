@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ProductCard, LoadingSpinner, ErrorMessage, LazyImage } from '../components';
+import { ProductCard, LoadingSpinner, ErrorMessage, LazyImage, RecentlyViewed, ScrollAnimation } from '../components';
 import productService from '../services/productService';
 
 const Home = () => {
@@ -892,6 +892,9 @@ const Home = () => {
           </form>
         </div>
       </section>
+
+      {/* Recently Viewed Section */}
+      <RecentlyViewed />
     </div>
   );
 };

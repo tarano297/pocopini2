@@ -24,6 +24,8 @@ const AdminProducts = lazy(() => import('./pages/AdminProducts'));
 const AdminProductForm = lazy(() => import('./pages/AdminProductForm'));
 const AdminOrders = lazy(() => import('./pages/AdminOrders'));
 const AdminUsers = lazy(() => import('./pages/AdminUsers'));
+const OrderTracking = lazy(() => import('./pages/OrderTracking'));
+const FAQ = lazy(() => import('./pages/FAQ'));
 
 function App() {
   return (
@@ -54,6 +56,8 @@ function App() {
                       <Route path="/register" element={<Register />} />
                       <Route path="/profile" element={<Profile />} />
                       <Route path="/profile/addresses" element={<AddressManagement />} />
+                      <Route path="/order-tracking" element={<OrderTracking />} />
+                      <Route path="/faq" element={<FAQ />} />
                       
                       {/* Admin Routes */}
                       <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />

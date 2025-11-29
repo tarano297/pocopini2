@@ -139,6 +139,12 @@ const Navbar = () => {
               </div>
             </div>
             <a 
+              href="/order-tracking" 
+              className="text-gray-700 hover:text-coral text-sm font-medium transition-colors"
+            >
+              پیگیری سفارشات
+            </a>
+            <a 
               href="/about" 
               className="text-gray-700 hover:text-coral text-sm font-medium transition-colors"
             >
@@ -317,6 +323,9 @@ const Navbar = () => {
 
               <hr className="my-4 border-gray-100" />
 
+              <a href="/order-tracking" className="block px-4 py-3 text-base font-medium text-gray-700 hover:text-coral hover:bg-pastel-pink/20 rounded-lg transition-colors">
+                پیگیری سفارشات
+              </a>
               <a href="/about" className="block px-4 py-3 text-base font-medium text-gray-700 hover:text-coral hover:bg-pastel-pink/20 rounded-lg transition-colors">
                 درباره ما
               </a>

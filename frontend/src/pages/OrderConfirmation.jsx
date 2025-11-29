@@ -273,9 +273,6 @@ const OrderConfirmation = () => {
               <div className="text-sm text-blue-800">
                 <p className="font-medium mb-1">توجه:</p>
                 <p>با کلیک روی دکمه "تایید نهایی سفارش"، سفارش شما ثبت و به درگاه پرداخت منتقل خواهید شد.</p>
-                <p className="mt-2 text-xs text-gray-600">
-                  در صورت بروز مشکل، لطفاً console مرورگر را بررسی کنید (F12)
-                </p>
               </div>
             </div>
           </div>

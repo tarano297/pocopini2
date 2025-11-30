@@ -26,6 +26,7 @@ const AdminOrders = lazy(() => import('./pages/AdminOrders'));
 const AdminUsers = lazy(() => import('./pages/AdminUsers'));
 const OrderTracking = lazy(() => import('./pages/OrderTracking'));
 const FAQ = lazy(() => import('./pages/FAQ'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
 
 function App() {
   return (
@@ -60,6 +61,7 @@ function App() {
                       <Route path="/profile/addresses" element={<AddressManagement />} />
                       <Route path="/order-tracking" element={<OrderTracking />} />
                       <Route path="/faq" element={<FAQ />} />
+                      <Route path="/contact" element={<ContactPage />} />
                       
                       {/* Admin Routes */}
                       <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />

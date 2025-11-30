@@ -13,6 +13,22 @@ class User(AbstractUser):
         blank=True,
         verbose_name='شماره تلفن'
     )
+    # فیلدهای اضافی برای اطلاعات کاربر
+    national_code = models.CharField(
+        max_length=10,
+        null=True,
+        blank=True,
+        verbose_name='کد ملی'
+    )
+    birth_date = models.DateField(
+        null=True,
+        blank=True,
+        verbose_name='تاریخ تولد'
+    )
+    notes = models.TextField(
+        blank=True,
+        verbose_name='یادداشت‌های ادمین'
+    )
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='تاریخ ایجاد')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='تاریخ به‌روزرسانی')
 
@@ -22,6 +38,19 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.username
+    
+    @property
+    def total_orders(self):
+        """تعداد کل سفارشات"""
+        return self.orders.count()
+    
+    @property
+    def total_spent(self):
+        """مجموع خرید کاربر"""
+        from django.db.models import Sum
+        return self.orders.filter(payment_status='paid').aggregate(
+            total=Sum('total_price')
+        )['total'] or 0
 
 
 class Address(models.Model):

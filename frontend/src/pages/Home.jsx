@@ -868,31 +868,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Newsletter Section */}
-      <section className="py-16 bg-gradient-to-r from-coral to-primary-light">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
-            از تخفیف‌های ویژه باخبر شوید
-          </h2>
-          <p className="text-lg text-white/90 mb-8">
-            با عضویت در خبرنامه، از جدیدترین محصولات و تخفیف‌ها مطلع شوید
-          </p>
-          <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="ایمیل خود را وارد کنید"
-              className="flex-1 px-6 py-4 rounded-full text-gray-900 focus:outline-none focus:ring-4 focus:ring-white/50"
-            />
-            <button
-              type="submit"
-              className="bg-gray-900 text-white px-8 py-4 rounded-full font-bold hover:bg-gray-800 transition-all duration-300 transform hover:scale-105"
-            >
-              عضویت
-            </button>
-          </form>
-        </div>
-      </section>
-
       {/* Recently Viewed Section */}
       <RecentlyViewed />
     </div>

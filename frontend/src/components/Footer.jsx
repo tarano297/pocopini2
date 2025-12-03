@@ -62,15 +62,21 @@ const Footer = memo(() => {
           <div>
             <h3 className="text-xl font-bold mb-6 text-white">ارتباط با ما</h3>
             <div className="space-y-4">
-              <div className="flex items-start">
-                <div className="w-10 h-10 bg-purple-600/20 rounded-lg flex items-center justify-center ml-3 flex-shrink-0">
+              {/* Location */}
+              <a 
+                href="https://maps.google.com/?q=تهران،+خیابان+ولیعصر" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-start group hover:translate-x-1 transition-transform"
+              >
+                <div className="w-10 h-10 bg-purple-600/20 rounded-lg flex items-center justify-center ml-3 flex-shrink-0 group-hover:bg-purple-600/30 transition-colors">
                   <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
-                <span className="text-gray-300">تهران، خیابان ولیعصر</span>
-              </div>
+                <span className="text-gray-300 group-hover:text-purple-400 transition-colors">تهران، خیابان ولیعصر</span>
+              </a>
 
               {/* Instagram */}
               <a 

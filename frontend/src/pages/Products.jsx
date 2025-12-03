@@ -112,7 +112,7 @@ const Products = () => {
                   <span className="text-pink-600 font-bold text-lg">
                     {product.price.toLocaleString()} تومان
                   </span>
-                  {product.stock > 0 ? (
+                  {product.is_in_stock ? (
                     <span className="text-green-600 text-sm">موجود</span>
                   ) : (
                     <span className="text-red-600 text-sm">ناموجود</span>

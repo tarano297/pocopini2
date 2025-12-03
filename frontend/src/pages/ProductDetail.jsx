@@ -157,7 +157,7 @@ const ProductDetail = () => {
                     onError={imageUtils.handleImageError}
                   />
                 </div>
-                {product.stock === 0 && (
+                {!product.is_in_stock && (
                   <div className="absolute top-4 right-4 bg-red-500 text-white px-4 py-2 rounded-full font-bold shadow-lg">
                     ناموجود
                   </div>
@@ -204,7 +204,7 @@ const ProductDetail = () => {
                   </span>
                 </div>
                 <div className="flex items-center gap-4">
-                  {product.stock > 0 ? (
+                  {product.is_in_stock ? (
                     <>
                       <span className="flex items-center text-green-600 font-medium">
                         <svg className="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20">
@@ -212,9 +212,11 @@ const ProductDetail = () => {
                         </svg>
                         موجود در انبار
                       </span>
-                      <span className="text-sm text-gray-600">
-                        ({priceUtils.toPersianDigits(product.stock)} عدد)
-                      </span>
+                      {product.variants && product.variants.length > 0 && (
+                        <span className="text-sm text-gray-600">
+                          ({priceUtils.toPersianDigits(product.variants.reduce((sum, v) => sum + v.stock, 0))} عدد)
+                        </span>
+                      )}
                     </>
                   ) : (
                     <span className="flex items-center text-red-600 font-medium">

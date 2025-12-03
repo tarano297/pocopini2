@@ -13,6 +13,7 @@ const Home = () => {
     comment: ''
   });
   const [userReviews, setUserReviews] = useState([]);
+  const reviewsScrollRef = React.useRef(null);
 
   useEffect(() => {
     loadFeaturedProducts();
@@ -32,6 +33,17 @@ const Home = () => {
       setError(err.message || 'خطا در بارگذاری محصولات');
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const scrollReviews = (direction) => {
+    if (reviewsScrollRef.current) {
+      const scrollAmount = 420; // عرض کارت + gap
+      const currentScroll = reviewsScrollRef.current.scrollLeft;
+      reviewsScrollRef.current.scrollTo({
+        left: direction === 'left' ? currentScroll - scrollAmount : currentScroll + scrollAmount,
+        behavior: 'smooth'
+      });
     }
   };
 
@@ -544,6 +556,27 @@ const Home = () => {
 
           {/* Scrollable Reviews Container */}
           <div className="relative">
+            {/* Navigation Buttons */}
+            <button
+              onClick={() => scrollReviews('right')}
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl flex items-center justify-center text-gray-700 hover:text-coral transition-all duration-300 hover:scale-110 hidden md:flex"
+              aria-label="نظر قبلی"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            
+            <button
+              onClick={() => scrollReviews('left')}
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl flex items-center justify-center text-gray-700 hover:text-coral transition-all duration-300 hover:scale-110 hidden md:flex"
+              aria-label="نظر بعدی"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
             {/* Scroll Hint - Left */}
             <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-l from-transparent to-white z-10 pointer-events-none hidden md:block"></div>
             
@@ -551,7 +584,11 @@ const Home = () => {
             <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-r from-transparent to-white z-10 pointer-events-none hidden md:block"></div>
 
             {/* Reviews Carousel */}
-            <div className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide" style={{scrollbarWidth: 'none', msOverflowStyle: 'none'}}>
+            <div 
+              ref={reviewsScrollRef}
+              className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide" 
+              style={{scrollbarWidth: 'none', msOverflowStyle: 'none'}}
+            >
               {/* نظرات کاربران جدید */}
               {userReviews.map((review, index) => (
                 <div 
@@ -663,7 +700,8 @@ const Home = () => {
                 <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
                 </svg>
-                برای مشاهده نظرات بیشتر به چپ و راست بکشید
+                <span className="hidden md:inline">برای مشاهده نظرات بیشتر از دکمه‌ها استفاده کنید یا به چپ و راست بکشید</span>
+                <span className="md:hidden">برای مشاهده نظرات بیشتر به چپ و راست بکشید</span>
                 <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>

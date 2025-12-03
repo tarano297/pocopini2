@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import { ErrorBoundary, ToastProvider, Navbar, Footer, LoadingSpinner, WelcomePopup, WhatsAppButton } from './components';
+import { ErrorBoundary, ToastProvider, Navbar, Footer, LoadingSpinner, WelcomePopup } from './components';
 import AdminRoute from './components/AdminRoute';
 import { AuthProvider } from './contexts/AuthContext';
 import { CartProvider } from './contexts/CartContext';
@@ -38,7 +38,6 @@ function App() {
               <div className="min-h-screen bg-white flex flex-col">
                 <Navbar />
                 <WelcomePopup />
-                <WhatsAppButton />
                 <main className="flex-grow">
                   <Suspense fallback={
                     <div className="flex items-center justify-center min-h-screen">

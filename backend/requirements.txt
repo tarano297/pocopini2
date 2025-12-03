@@ -1,15 +1,39 @@
+# Core Django
 Django==4.2.7
+asgiref==3.11.0
+sqlparse==0.5.3
+tzdata==2025.2
+pytz==2025.2
+
+# Django REST Framework
 djangorestframework==3.14.0
 djangorestframework-simplejwt==5.3.0
+PyJWT==2.10.1
+
+# Django Extensions
 django-cors-headers==4.3.0
 django-filter==23.5
+django-redis==5.4.0
+
+# Image Processing
 Pillow==10.1.0
+
+# Persian/Jalali Date Support
 jdatetime==4.1.1
+
+# Configuration Management
 python-decouple==3.8
 
-# Production dependencies
-psycopg2-binary==2.9.9
+# Production Server
 gunicorn==21.2.0
 whitenoise==6.6.0
+
+# Database
+psycopg2-binary==2.9.9
+
+# Cache/Redis
 redis==5.0.1
-django-redis==5.4.0
+
+# Build Tools
+packaging==25.0
+setuptools==80.9.0

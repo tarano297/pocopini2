@@ -307,7 +307,7 @@ const GiftGuide = () => {
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">بسته‌بندی زیبا</h3>
               <p className="text-gray-600 text-sm">
-                ما هدیه شما را با بسته‌بندی زیبا و رایگان آماده می‌کنیم.
+                ما هدیه شما را با بسته‌بندی زیبا آماده می‌کنیم.
               </p>
             </div>
           </div>

@@ -33,6 +33,7 @@ ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(','
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',  # باید قبل از django.contrib.admin باشد
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -174,7 +175,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # WhiteNoise configuration for static files
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 # Caching Configuration (Redis for production)
 if os.environ.get('REDIS_URL'):
@@ -385,4 +386,140 @@ LOGGING = {
             'propagate': False,
         },
     },
+}
+
+
+# ========================================
+# Jazzmin Admin Panel Configuration
+# ========================================
+
+JAZZMIN_SETTINGS = {
+    # عنوان پنل
+    "site_title": "پوکوپینی",
+    "site_header": "پنل مدیریت پوکوپینی",
+    "site_brand": "پوکوپینی",
+    "site_logo": None,  # می‌توانید لوگو اضافه کنید
+    "login_logo": None,
+    "site_logo_classes": "img-circle",
+    "site_icon": None,
+    
+    # پیام خوش‌آمدگویی
+    "welcome_sign": "خوش آمدید به پنل مدیریت پوکوپینی",
+    
+    # متن کپی‌رایت
+    "copyright": "پوکوپینی © 2024",
+    
+    # جستجو در مدل‌ها
+    "search_model": ["auth.User", "auth.Group"],
+    
+    # لینک‌های بالای صفحه
+    "topmenu_links": [
+        {"name": "خانه", "url": "admin:index", "permissions": ["auth.view_user"]},
+        {"name": "پشتیبانی", "url": "/api/contact/", "new_window": True},
+        {"model": "auth.User"},
+        {"app": "products"},
+    ],
+    
+    # نمایش لینک‌های سفارشی در منوی کناری
+    "usermenu_links": [
+        {"name": "پشتیبانی", "url": "/api/contact/", "new_window": True},
+        {"model": "auth.user"}
+    ],
+    
+    # نمایش آیکون‌ها در منو
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "hide_apps": [],
+    "hide_models": [],
+    
+    # ترتیب اپلیکیشن‌ها
+    "order_with_respect_to": ["accounts", "products", "orders", "reviews", "auth"],
+    
+    # آیکون‌های سفارشی برای اپلیکیشن‌ها و مدل‌ها
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+        
+        "accounts": "fas fa-user-circle",
+        "accounts.User": "fas fa-user",
+        "accounts.Address": "fas fa-map-marker-alt",
+        
+        "products": "fas fa-box-open",
+        "products.Category": "fas fa-tags",
+        "products.Product": "fas fa-shopping-bag",
+        "products.ProductImage": "fas fa-images",
+        "products.ProductVariant": "fas fa-palette",
+        
+        "orders": "fas fa-shopping-cart",
+        "orders.Order": "fas fa-receipt",
+        "orders.OrderItem": "fas fa-list",
+        "orders.Payment": "fas fa-credit-card",
+        "orders.Shipping": "fas fa-truck",
+        
+        "reviews": "fas fa-star",
+        "reviews.Review": "fas fa-comment-dots",
+    },
+    
+    # آیکون‌های پیش‌فرض
+    "default_icon_parents": "fas fa-chevron-circle-right",
+    "default_icon_children": "fas fa-circle",
+    
+    # لینک‌های مرتبط
+    "related_modal_active": False,
+    
+    # تنظیمات UI
+    "custom_css": None,
+    "custom_js": None,
+    "use_google_fonts_cdn": True,
+    "show_ui_builder": False,
+    
+    # تنظیمات تم
+    "changeform_format": "horizontal_tabs",
+    "changeform_format_overrides": {
+        "auth.user": "collapsible",
+        "auth.group": "vertical_tabs"
+    },
+    
+    # دکمه‌های سفارشی
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "hide_apps": [],
+    "hide_models": [],
+    
+    # زبان
+    "language_chooser": False,
+}
+
+JAZZMIN_UI_TWEAKS = {
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": False,
+    "brand_small_text": False,
+    "brand_colour": "navbar-success",
+    "accent": "accent-primary",
+    "navbar": "navbar-white navbar-light",
+    "no_navbar_border": False,
+    "navbar_fixed": True,
+    "layout_boxed": False,
+    "footer_fixed": False,
+    "sidebar_fixed": True,
+    "sidebar": "sidebar-dark-primary",
+    "sidebar_nav_small_text": False,
+    "sidebar_disable_expand": False,
+    "sidebar_nav_child_indent": False,
+    "sidebar_nav_compact_style": False,
+    "sidebar_nav_legacy_style": False,
+    "sidebar_nav_flat_style": False,
+    "theme": "flatly",  # تم زیبا - گزینه‌های دیگر: cerulean, cosmo, cyborg, darkly, flatly, journal, litera, lumen, lux, materia, minty, pulse, sandstone, simplex, sketchy, slate, solar, spacelab, superhero, united, yeti
+    "dark_mode_theme": None,
+    "button_classes": {
+        "primary": "btn-primary",
+        "secondary": "btn-secondary",
+        "info": "btn-info",
+        "warning": "btn-warning",
+        "danger": "btn-danger",
+        "success": "btn-success"
+    },
+    "actions_sticky_top": False
 }

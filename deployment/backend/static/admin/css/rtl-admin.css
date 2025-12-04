@@ -1,0 +1,310 @@
+/* استایل‌های راست‌چین برای پنل ادمین فارسی */
+
+body {
+    direction: rtl;
+    text-align: right;
+    font-family: 'Tahoma', 'Arial', sans-serif;
+}
+
+/* منوی کناری */
+.main-sidebar {
+    right: 0;
+    left: auto;
+}
+
+.content-wrapper,
+.main-footer {
+    margin-right: 250px;
+    margin-left: 0;
+}
+
+/* هدر و نوبار */
+.main-header .navbar-nav {
+    flex-direction: row-reverse;
+}
+
+.navbar-nav .nav-link {
+    text-align: right;
+}
+
+/* منوی کناری */
+.nav-sidebar .nav-link {
+    text-align: right;
+}
+
+.nav-sidebar .nav-link p {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+.nav-sidebar .nav-icon {
+    margin-left: 0.5rem;
+    margin-right: 0;
+    float: right;
+}
+
+.nav-treeview {
+    padding-right: 1rem;
+    padding-left: 0;
+}
+
+/* فرم‌ها */
+.form-group label {
+    text-align: right;
+}
+
+.form-control {
+    text-align: right;
+}
+
+/* جداول */
+.table {
+    direction: rtl;
+}
+
+.table th,
+.table td {
+    text-align: right;
+}
+
+/* دکمه‌ها */
+.btn {
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    direction: rtl;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    float: left;
+    padding-left: 0.5rem;
+    padding-right: 0;
+}
+
+/* کارت‌ها */
+.card-header {
+    text-align: right;
+}
+
+.card-body {
+    text-align: right;
+}
+
+/* آیکون‌ها */
+.fas,
+.far,
+.fab {
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+/* Pagination */
+.pagination {
+    direction: rtl;
+}
+
+/* فوتر */
+.main-footer {
+    text-align: center;
+    padding: 1rem;
+    background: #f4f6f9;
+    border-top: 1px solid #dee2e6;
+}
+
+/* منوی کاربر */
+.user-panel {
+    text-align: right;
+}
+
+.user-panel .info {
+    padding-right: 0;
+    padding-left: 10px;
+}
+
+/* Search form */
+.form-control-navbar {
+    text-align: right;
+}
+
+/* Dropdown menus */
+.dropdown-menu {
+    text-align: right;
+}
+
+/* Alert messages */
+.alert {
+    text-align: right;
+}
+
+/* Info boxes */
+.info-box {
+    direction: rtl;
+}
+
+.info-box-icon {
+    border-radius: 0 2px 2px 0;
+}
+
+.info-box-content {
+    padding: 5px 10px;
+    margin-right: 90px;
+    margin-left: 0;
+}
+
+/* Small box */
+.small-box {
+    direction: rtl;
+}
+
+.small-box .icon {
+    right: auto;
+    left: 10px;
+}
+
+/* Sidebar toggle */
+.nav-link[data-widget="pushmenu"] {
+    float: left;
+}
+
+/* حالت موبایل */
+@media (max-width: 991.98px) {
+    .content-wrapper,
+    .main-footer {
+        margin-right: 0;
+        margin-left: 0;
+    }
+    
+    .main-sidebar {
+        right: -250px;
+        left: auto;
+    }
+    
+    .sidebar-open .main-sidebar {
+        right: 0;
+    }
+}
+
+/* تنظیمات اضافی برای فونت فارسی */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: 'Tahoma', 'Arial', sans-serif;
+}
+
+/* بهبود خوانایی متن فارسی */
+p, span, div, a, label, input, textarea, select {
+    font-family: 'Tahoma', 'Arial', sans-serif;
+}
+
+/* تنظیم فاصله‌گذاری برای متن فارسی */
+.content-wrapper {
+    line-height: 1.8;
+}
+
+/* استایل بهتر برای لینک‌ها */
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* تنظیم چک‌باکس و رادیو باتن */
+.form-check {
+    padding-right: 1.25rem;
+    padding-left: 0;
+}
+
+.form-check-input {
+    margin-right: -1.25rem;
+    margin-left: 0;
+}
+
+/* تنظیم Select2 برای راست‌چین */
+.select2-container--default .select2-selection--single {
+    text-align: right;
+}
+
+.select2-results {
+    direction: rtl;
+    text-align: right;
+}
+
+/* تنظیم DatePicker */
+.datepicker {
+    direction: rtl;
+}
+
+/* تنظیم فیلترها */
+#changelist-filter {
+    left: auto;
+    right: 0;
+}
+
+#changelist {
+    margin-left: 0;
+    margin-right: 280px;
+}
+
+/* تنظیم اکشن‌ها */
+.actions {
+    text-align: right;
+}
+
+.actions label {
+    margin-left: 0.5rem;
+    margin-right: 0;
+}
+
+/* تنظیم پیام‌های سیستم */
+.messagelist {
+    padding: 0;
+    margin: 0 0 20px;
+}
+
+.messagelist li {
+    text-align: right;
+}
+
+/* تنظیم inline forms */
+.inline-group {
+    direction: rtl;
+}
+
+/* بهبود ظاهر دکمه‌های اکشن */
+.submit-row {
+    text-align: left;
+    padding: 12px 14px;
+}
+
+.submit-row input,
+.submit-row a {
+    margin: 0 0 0 5px;
+}
+
+/* تنظیم help text */
+.help,
+.helptext {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+/* تنظیم error messages */
+.errorlist {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.errorlist li {
+    background: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    margin: 5px 0;
+    border-radius: 3px;
+}

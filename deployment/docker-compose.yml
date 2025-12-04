@@ -1,0 +1,79 @@
+# Docker Compose برای پوکوپینی
+
+version: '3.8'
+
+services:
+  # Database
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: pokopini_db
+      POSTGRES_USER: pokopini_user
+      POSTGRES_PASSWORD: pokopini_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pokopini_user -d pokopini_db"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Redis
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Backend
+  backend:
+    build: ./backend
+    environment:
+      - DEBUG=False
+      - DB_NAME=pokopini_db
+      - DB_USER=pokopini_user
+      - DB_PASSWORD=pokopini_password
+      - DB_HOST=db
+      - DB_PORT=5432
+      - REDIS_URL=redis://redis:6379/1
+      - SECRET_KEY=your-secret-key-here
+    volumes:
+      - ./backend:/app
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py collectstatic --noinput &&
+             gunicorn --bind 0.0.0.0:8000 pokopini.wsgi:application"
+
+  # Frontend
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    volumes:
+      - static_volume:/usr/share/nginx/html/static
+      - media_volume:/usr/share/nginx/html/media
+
+volumes:
+  postgres_data:
+  redis_data:
+  static_volume:
+  media_volume:

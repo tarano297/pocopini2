@@ -1,0 +1,41 @@
+{% extends "jazzmin/base.html" %}
+{% load static %}
+
+{% block extrastyle %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'admin/css/rtl-admin.css' %}">
+<link rel="stylesheet" href="{% static 'admin/css/jazzmin-rtl.css' %}">
+<style>
+    /* استایل‌های اضافی برای بهبود ظاهر فارسی */
+    html, body {
+        font-family: 'Tahoma', 'Arial', sans-serif !important;
+        direction: rtl !important;
+        text-align: right !important;
+    }
+    
+    .main-footer {
+        text-align: center !important;
+        padding: 15px !important;
+        background: #f4f6f9 !important;
+        border-top: 1px solid #dee2e6 !important;
+        font-size: 14px !important;
+        color: #495057 !important;
+        direction: rtl !important;
+    }
+    
+    .main-footer strong {
+        font-weight: 600 !important;
+    }
+    
+    /* حذف متن‌های اضافی */
+    .main-footer .float-right {
+        display: none !important;
+    }
+</style>
+{% endblock %}
+
+{% block footer %}
+<footer class="main-footer">
+    <strong>کلیه حقوق این سایت متعلق به پوکوپینی می‌باشد. توسعه و طراحی توسط ترنم کمالی پناه</strong>
+</footer>
+{% endblock %}

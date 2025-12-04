@@ -469,9 +469,9 @@ JAZZMIN_SETTINGS = {
     "related_modal_active": False,
     
     # تنظیمات UI
-    "custom_css": None,
+    "custom_css": "admin/css/rtl-admin.css",
     "custom_js": None,
-    "use_google_fonts_cdn": True,
+    "use_google_fonts_cdn": False,
     "show_ui_builder": False,
     
     # تنظیمات تم

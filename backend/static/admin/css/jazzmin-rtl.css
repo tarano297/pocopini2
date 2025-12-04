@@ -1,0 +1,287 @@
+/* تنظیمات راست‌چین اختصاصی Jazzmin */
+
+/* تنظیم کلی صفحه */
+html[dir="rtl"] body,
+body {
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+/* منوی کناری */
+.main-sidebar {
+    right: 0 !important;
+    left: auto !important;
+}
+
+.sidebar {
+    direction: rtl !important;
+}
+
+/* محتوای اصلی */
+.content-wrapper {
+    margin-right: 250px !important;
+    margin-left: 0 !important;
+}
+
+/* نوار بالا */
+.main-header {
+    margin-right: 250px !important;
+    margin-left: 0 !important;
+}
+
+.navbar-nav {
+    flex-direction: row-reverse !important;
+}
+
+/* منوی سایدبار */
+.nav-sidebar > .nav-item .nav-icon {
+    margin-left: 0.5rem !important;
+    margin-right: 0 !important;
+    float: right !important;
+}
+
+.nav-sidebar .nav-link > p {
+    display: inline-block;
+    margin-right: 0 !important;
+}
+
+.nav-treeview {
+    padding-right: 1rem !important;
+    padding-left: 0 !important;
+}
+
+.nav-treeview > .nav-item > .nav-link > .nav-icon {
+    margin-left: 0.2rem !important;
+}
+
+/* دکمه toggle منو */
+.nav-link[data-widget="pushmenu"] {
+    float: left !important;
+}
+
+/* Breadcrumb */
+.content-header .breadcrumb {
+    float: left !important;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    float: left !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0 !important;
+    content: "/" !important;
+}
+
+/* کارت‌ها */
+.card-tools {
+    float: left !important;
+}
+
+/* جداول */
+.table {
+    direction: rtl !important;
+}
+
+.table th,
+.table td {
+    text-align: right !important;
+}
+
+/* فرم‌ها */
+.form-group label {
+    text-align: right !important;
+}
+
+.form-control,
+.form-select {
+    text-align: right !important;
+    direction: rtl !important;
+}
+
+/* دکمه‌ها */
+.btn-group {
+    direction: rtl !important;
+}
+
+/* Pagination */
+.pagination {
+    direction: rtl !important;
+}
+
+/* Info boxes */
+.info-box-icon {
+    border-radius: 0 0.25rem 0.25rem 0 !important;
+}
+
+.info-box-content {
+    margin-right: 90px !important;
+    margin-left: 0 !important;
+}
+
+/* Small boxes */
+.small-box > .icon {
+    right: auto !important;
+    left: 10px !important;
+}
+
+.small-box > .small-box-footer {
+    text-align: center !important;
+}
+
+/* User panel */
+.user-panel {
+    direction: rtl !important;
+}
+
+.user-panel .image {
+    float: right !important;
+    margin-left: 10px !important;
+    margin-right: 0 !important;
+}
+
+.user-panel .info {
+    padding-right: 0 !important;
+    padding-left: 10px !important;
+}
+
+/* Dropdown */
+.dropdown-menu {
+    text-align: right !important;
+    right: 0 !important;
+    left: auto !important;
+}
+
+/* Alert */
+.alert {
+    text-align: right !important;
+}
+
+.alert-dismissible .btn-close {
+    left: 0 !important;
+    right: auto !important;
+}
+
+/* Modal */
+.modal-header .btn-close {
+    margin: -0.5rem auto -0.5rem -0.5rem !important;
+}
+
+/* فوتر */
+.main-footer {
+    margin-right: 250px !important;
+    margin-left: 0 !important;
+    text-align: center !important;
+    direction: rtl !important;
+}
+
+/* حالت موبایل */
+@media (max-width: 991.98px) {
+    .content-wrapper,
+    .main-header,
+    .main-footer {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+    
+    .main-sidebar {
+        right: -250px !important;
+        left: auto !important;
+    }
+    
+    body.sidebar-open .main-sidebar {
+        right: 0 !important;
+    }
+}
+
+/* تنظیمات فونت فارسی */
+body,
+.sidebar,
+.content-wrapper,
+.main-header,
+.main-footer,
+.card,
+.btn,
+.form-control,
+.table,
+input,
+select,
+textarea {
+    font-family: 'Tahoma', 'Arial', sans-serif !important;
+}
+
+/* بهبود خوانایی */
+p, span, div, a, label {
+    line-height: 1.8 !important;
+}
+
+/* تنظیم چک‌باکس */
+.form-check {
+    padding-right: 1.25rem !important;
+    padding-left: 0 !important;
+}
+
+.form-check-input {
+    float: right !important;
+    margin-right: -1.25rem !important;
+    margin-left: 0 !important;
+}
+
+/* تنظیم Switch */
+.form-switch .form-check-input {
+    margin-right: -2.5rem !important;
+}
+
+/* تنظیم Select2 */
+.select2-container--default .select2-selection--single {
+    text-align: right !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    left: 1px !important;
+    right: auto !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    padding-right: 8px !important;
+    padding-left: 20px !important;
+}
+
+/* تنظیم DatePicker */
+.datepicker {
+    direction: rtl !important;
+}
+
+/* تنظیم Toast notifications */
+.toast {
+    direction: rtl !important;
+}
+
+/* تنظیم Progress bars */
+.progress {
+    direction: ltr !important;
+}
+
+/* تنظیم Badge */
+.badge {
+    margin-left: 5px !important;
+    margin-right: 0 !important;
+}
+
+/* تنظیم List group */
+.list-group-item {
+    text-align: right !important;
+}
+
+/* تنظیم Nav tabs */
+.nav-tabs .nav-link {
+    text-align: right !important;
+}
+
+/* تنظیم Accordion */
+.accordion-button {
+    text-align: right !important;
+}
+
+.accordion-button::after {
+    margin-right: auto !important;
+    margin-left: 0 !important;
+}

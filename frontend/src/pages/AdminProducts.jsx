@@ -65,19 +65,19 @@ const AdminProducts = () => {
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50" dir="rtl">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
-        <div className="flex justify-between items-center mb-8">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
           <div>
-            <h1 className="text-4xl font-bold text-gray-800 mb-2">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-2">
               🛍️ مدیریت محصولات
             </h1>
-            <p className="text-gray-600">مدیریت و ویرایش محصولات فروشگاه</p>
+            <p className="text-sm md:text-base text-gray-600">مدیریت و ویرایش محصولات فروشگاه</p>
           </div>
           <button
             onClick={() => navigate('/admin/products/new')}
-            className="bg-gradient-to-r from-pink-500 to-pink-600 text-white px-8 py-3 rounded-xl hover:from-pink-600 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2"
+            className="w-full md:w-auto bg-gradient-to-r from-pink-500 to-pink-600 text-white px-6 md:px-8 py-3 rounded-xl hover:from-pink-600 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
           >
             <span className="text-xl">➕</span>
-            افزودن محصول
+            <span className="text-sm md:text-base">افزودن محصول</span>
           </button>
         </div>
 

@@ -9,27 +9,27 @@ const Footer = memo(() => {
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-8 md:mb-12">
           {/* لوگو و توضیحات */}
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center mb-6">
+            <div className="flex items-center mb-4 md:mb-6">
               <div className="bg-white rounded-full p-2 shadow-lg">
                 <img 
                   src="/images/لوگو.jpg" 
                   alt="پوکوپینی" 
-                  className="h-14 w-14 rounded-full object-cover"
+                  className="h-12 w-12 md:h-14 md:w-14 rounded-full object-cover"
                 />
               </div>
             </div>
-            <p className="text-gray-300 mb-6 leading-relaxed text-lg">
+            <p className="text-gray-300 mb-4 md:mb-6 leading-relaxed text-sm md:text-base lg:text-lg">
               پوکوپینی، فروشگاه آنلاین تخصصی لباس کودک با بهترین کیفیت و قیمت مناسب. ما با عشق و دقت، بهترین‌ها را برای فرشته‌های کوچک شما انتخاب می‌کنیم.
             </p>
           </div>
 
           {/* لینک‌های مفید */}
           <div>
-            <h3 className="text-xl font-bold mb-6 text-white">لینک‌های مفید</h3>
+            <h3 className="text-lg md:text-xl font-bold mb-4 md:mb-6 text-white">لینک‌های مفید</h3>
             <ul className="space-y-3">
               <li>
                 <a href="/" className="text-gray-300 hover:text-purple-400 transition-colors flex items-center group">
@@ -68,7 +68,7 @@ const Footer = memo(() => {
 
           {/* ارتباط با ما */}
           <div>
-            <h3 className="text-xl font-bold mb-6 text-white">ارتباط با ما</h3>
+            <h3 className="text-lg md:text-xl font-bold mb-4 md:mb-6 text-white">ارتباط با ما</h3>
             <div className="space-y-4">
               {/* Location */}
               <a 
@@ -120,12 +120,12 @@ const Footer = memo(() => {
         </div>
 
         {/* خط جداکننده */}
-        <div className="border-t border-gray-700/50 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm mb-4 md:mb-0">
+        <div className="border-t border-gray-700/50 pt-6 md:pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-gray-400 text-xs md:text-sm text-center md:text-right">
               کلیه حقوق این سایت متعلق به پوکوپینی می‌باشد. توسعه و طراحی توسط ترنم کمالی پناه
             </p>
-            <div className="flex items-center space-x-6 space-x-reverse text-sm text-gray-400">
+            <div className="flex items-center flex-wrap justify-center gap-4 md:gap-6 text-xs md:text-sm text-gray-400">
               <a href="/terms" className="hover:text-purple-400 transition-colors">قوانین و مقررات</a>
               <a href="/privacy" className="hover:text-purple-400 transition-colors">حریم خصوصی</a>
               <a href="/faq" className="hover:text-purple-400 transition-colors">سوالات متداول</a>

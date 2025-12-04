@@ -158,14 +158,14 @@ const Home = () => {
                 <span className="ml-2">🎁</span>
                 تخفیف ویژه برای خرید اول
               </div>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
+              <h1 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-gray-900 mb-6 leading-tight">
                 لباس‌های
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-coral to-primary">
                   شاد و راحت
                 </span>
                 برای کودکان
               </h1>
-              <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed max-w-xl">
+              <p className="text-base md:text-lg lg:text-xl text-gray-600 mb-8 leading-relaxed max-w-xl">
                 کیفیت برتر، طراحی منحصر به فرد و قیمت مناسب. همه چیز برای خوشحالی کودک شما در یک مکان.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -241,10 +241,10 @@ const Home = () => {
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-4">
               خرید بر اساس سن
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
               محصولات مناسب برای هر سنی
             </p>
           </div>
@@ -273,16 +273,16 @@ const Home = () => {
                 </div>
                 
                 {/* Content */}
-                <div className="p-6 bg-white">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                <div className="p-4 md:p-6 bg-white">
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
                     {category.name}
                   </h3>
-                  <p className="text-gray-600 mb-4">
+                  <p className="text-sm md:text-base text-gray-600 mb-4">
                     {category.description}
                   </p>
-                  <div className="flex items-center text-pink-600 font-semibold group-hover:text-purple-600 transition-colors">
+                  <div className="flex items-center text-pink-600 font-semibold group-hover:text-purple-600 transition-colors text-sm md:text-base">
                     خرید کنید
-                    <svg className="w-5 h-5 mr-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 md:w-5 md:h-5 mr-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                     </svg>
                   </div>
@@ -297,10 +297,10 @@ const Home = () => {
       <section className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-4">
               خرید بر اساس فصل
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
               لباس‌های مناسب برای هر فصل از سال
             </p>
           </div>
@@ -430,12 +430,12 @@ const Home = () => {
       {/* Featured Products Section */}
       <section className="py-16 md:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-end mb-12">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
             <div>
-              <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-2">
+              <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-2">
                 محصولات پرفروش
               </h2>
-              <p className="text-lg text-gray-600">
+              <p className="text-base md:text-lg text-gray-600">
                 محبوب‌ترین انتخاب‌های مشتریان ما
               </p>
             </div>
@@ -490,10 +490,10 @@ const Home = () => {
       <section className="py-16 md:py-24 bg-white border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-4">
               چرا پوکوپینی؟
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
               تجربه خریدی آسان، سریع و مطمئن
             </p>
           </div>
@@ -546,10 +546,10 @@ const Home = () => {
       <section className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-4">
               نظرات مشتریان ما
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
               رضایت شما، افتخار ماست
             </p>
           </div>

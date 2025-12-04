@@ -94,10 +94,10 @@ const AdminDashboard = () => {
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-2">
             🎯 داشبورد مدیریت
           </h1>
-          <p className="text-gray-600">خوش آمدید! مدیریت فروشگاه پوکوپینی</p>
+          <p className="text-sm md:text-base text-gray-600">خوش آمدید! مدیریت فروشگاه پوکوپینی</p>
         </div>
 
         {/* آمار کلی */}

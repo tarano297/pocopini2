@@ -27,7 +27,7 @@ const Navbar = () => {
   return (
     <nav className="bg-white sticky top-0 z-50 shadow-lg border-b border-gray-100">
       {/* Top Search Bar */}
-      <div className="bg-gradient-to-r from-coral via-primary to-pastel-purple py-2.5">
+      <div className="bg-gradient-to-r from-coral via-primary to-pastel-purple py-2.5 hidden md:block">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <form onSubmit={handleSearch} className="max-w-2xl mx-auto">
             <div className="relative">

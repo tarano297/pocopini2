@@ -2,10 +2,12 @@
 Custom Security Middleware for Pokopini
 """
 import logging
-from django.http import JsonResponse
+import os
+from django.http import JsonResponse, HttpResponse
 from django.utils.deprecation import MiddlewareMixin
 from django.core.cache import cache
 from django.conf import settings
+from django.core.mail import mail_admins
 import hashlib
 
 logger = logging.getLogger(__name__)
@@ -166,11 +168,24 @@ class IPWhitelistMiddleware(MiddlewareMixin):
         client_ip = self.get_client_ip(request)
         
         if client_ip not in whitelist:
-            logger.warning(f'Unauthorized admin access attempt from IP: {client_ip}')
-            return JsonResponse({
-                'error': 'دسترسی غیرمجاز',
-                'detail': 'Access denied'
-            }, status=403)
+            logger.critical(f'🚨 Unauthorized admin access attempt from IP: {client_ip} to {request.path}')
+            
+            # ارسال ایمیل هشدار به ادمین‌ها
+            if getattr(settings, 'ADMIN_LOGIN_ATTEMPT_NOTIFICATION', False):
+                try:
+                    mail_admins(
+                        subject='🚨 تلاش دسترسی غیرمجاز به پنل ادمین',
+                        message=f'IP: {client_ip}\nPath: {request.path}\nUser-Agent: {request.META.get("HTTP_USER_AGENT", "Unknown")}',
+                        fail_silently=True
+                    )
+                except:
+                    pass
+            
+            return HttpResponse(
+                '<h1>403 Forbidden</h1><p>Access Denied</p>',
+                status=403,
+                content_type='text/html'
+            )
         
         return None
     

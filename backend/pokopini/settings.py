@@ -325,11 +325,16 @@ FILE_UPLOAD_DIRECTORY_PERMISSIONS = 0o755
 ALLOWED_IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.gif', '.webp']
 MAX_UPLOAD_SIZE = 5242880  # 5MB
 
-# Admin URL customization
-ADMIN_URL = os.environ.get('ADMIN_URL', 'admin/')
+# Admin URL customization - تغییر URL ادمین برای امنیت بیشتر
+ADMIN_URL = os.environ.get('ADMIN_URL', 'secure-panel-2024/')
 
 # Admin IP Whitelist (فقط IP های مشخص به ادمین دسترسی دارند)
+# مثال: ADMIN_IP_WHITELIST=192.168.1.100,203.0.113.5
 ADMIN_IP_WHITELIST = os.environ.get('ADMIN_IP_WHITELIST', '').split(',') if os.environ.get('ADMIN_IP_WHITELIST') else []
+
+# Admin Email Notifications - اطلاع‌رسانی تلاش‌های ناموفق ورود
+ADMIN_LOGIN_ATTEMPT_NOTIFICATION = os.environ.get('ADMIN_LOGIN_ATTEMPT_NOTIFICATION', 'True') == 'True'
+NOTIFY_ADMINS_ON_FAILED_LOGIN = int(os.environ.get('NOTIFY_ADMINS_ON_FAILED_LOGIN', '3'))  # بعد از 3 تلاش ناموفق
 
 # Authentication Backend
 AUTHENTICATION_BACKENDS = [
@@ -337,8 +342,9 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
-# Two-Factor Authentication (2FA)
-TWO_FACTOR_ENABLED = os.environ.get('TWO_FACTOR_ENABLED', 'False') == 'True'
+# Two-Factor Authentication (2FA) - احراز هویت دو مرحله‌ای
+TWO_FACTOR_ENABLED = os.environ.get('TWO_FACTOR_ENABLED', 'True') == 'True'
+TWO_FACTOR_FORCE_ADMIN = os.environ.get('TWO_FACTOR_FORCE_ADMIN', 'True') == 'True'  # اجباری برای ادمین‌ها
 
 # API Key for sensitive operations
 API_KEY_HEADER = 'X-API-Key'

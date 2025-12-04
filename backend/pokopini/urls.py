@@ -20,8 +20,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from .views import contact_view
 
+# تنظیمات سفارشی پنل ادمین
+admin.site.site_header = 'پنل مدیریت پوکوپینی'
+admin.site.site_title = 'مدیریت پوکوپینی'
+admin.site.index_title = 'خوش آمدید به پنل مدیریت'
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # استفاده از URL سفارشی برای امنیت بیشتر
+    path(settings.ADMIN_URL, admin.site.urls),
     path('api/auth/', include('accounts.urls')),
     path('api/products/', include('products.urls')),
     path('api/orders/', include('orders.urls')),

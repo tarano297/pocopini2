@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { getErrorMessage, normalizeError, logError } from '../utils/errorUtils';
+import { isTokenExpired, validateInput } from '../utils/securityUtils';
 
 // تنظیم baseURL برای API
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/api';
@@ -7,25 +8,89 @@ const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/api
 // ایجاد instance اصلی Axios
 const api = axios.create({
   baseURL: API_BASE_URL,
-  timeout: 10000,
+  timeout: 30000,
   headers: {
     'Content-Type': 'application/json',
   },
+  withCredentials: true, // برای ارسال کوکی‌ها
 });
 
 // Interceptor برای اضافه کردن JWT token به درخواست‌ها
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('access_token');
+    
+    // بررسی انقضای توکن قبل از ارسال درخواست
+    if (token && isTokenExpired(token)) {
+      // تلاش برای refresh token
+      const refreshToken = localStorage.getItem('refresh_token');
+      if (refreshToken && !isTokenExpired(refreshToken)) {
+        // درخواست refresh token را ارسال می‌کنیم
+        return refreshAccessToken(refreshToken).then(() => {
+          const newToken = localStorage.getItem('access_token');
+          config.headers.Authorization = `Bearer ${newToken}`;
+          return config;
+        }).catch(() => {
+          clearAuth();
+          window.location.href = '/login';
+          return Promise.reject(new Error('Token expired'));
+        });
+      } else {
+        clearAuth();
+        window.location.href = '/login';
+        return Promise.reject(new Error('Token expired'));
+      }
+    }
+    
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
+    
+    // اضافه کردن CSRF token برای درخواست‌های POST, PUT, DELETE
+    if (['post', 'put', 'delete', 'patch'].includes(config.method)) {
+      const csrfToken = getCookie('csrftoken');
+      if (csrfToken) {
+        config.headers['X-CSRFToken'] = csrfToken;
+      }
+    }
+    
+    // اعتبارسنجی ورودی برای جلوگیری از حملات
+    if (config.data && typeof config.data === 'object') {
+      const dataStr = JSON.stringify(config.data);
+      const validation = validateInput(dataStr);
+      if (!validation.isValid) {
+        return Promise.reject(new Error(validation.error));
+      }
+    }
+    
     return config;
   },
   (error) => {
     return Promise.reject(error);
   }
 );
+
+// تابع کمکی برای دریافت کوکی
+const getCookie = (name) => {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+  return null;
+};
+
+// تابع برای refresh کردن access token
+const refreshAccessToken = async (refreshToken) => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}/auth/refresh/`, {
+      refresh: refreshToken,
+    });
+    const newAccessToken = response.data.access;
+    localStorage.setItem('access_token', newAccessToken);
+    return newAccessToken;
+  } catch (error) {
+    throw error;
+  }
+};
 
 // Interceptor برای مدیریت پاسخ‌ها و خطاها
 api.interceptors.response.use(

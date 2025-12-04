@@ -32,19 +32,11 @@ const Footer = memo(() => {
             <h3 className="text-xl font-bold mb-6 text-white">لینک‌های مفید</h3>
             <ul className="space-y-3">
               <li>
-                <a href="/about" className="text-gray-300 hover:text-purple-400 transition-colors flex items-center group">
+                <a href="/" className="text-gray-300 hover:text-purple-400 transition-colors flex items-center group">
                   <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                   </svg>
-                  درباره ما
-                </a>
-              </li>
-              <li>
-                <a href="/contact" className="text-gray-300 hover:text-purple-400 transition-colors flex items-center group">
-                  <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                  </svg>
-                  تماس با ما
+                  خانه
                 </a>
               </li>
               <li>
@@ -53,6 +45,22 @@ const Footer = memo(() => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                   </svg>
                   محصولات
+                </a>
+              </li>
+              <li>
+                <a href="/order-tracking" className="text-gray-300 hover:text-purple-400 transition-colors flex items-center group">
+                  <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                  پیگیری سفارشات
+                </a>
+              </li>
+              <li>
+                <a href="/about" className="text-gray-300 hover:text-purple-400 transition-colors flex items-center group">
+                  <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                  درباره ما
                 </a>
               </li>
             </ul>
@@ -115,7 +123,7 @@ const Footer = memo(() => {
         <div className="border-t border-gray-700/50 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm mb-4 md:mb-0">
-              نوشته و طراحی شده توسط ترنم کمالی پناه
+              کلیه حقوق این سایت متعلق به پوکوپینی می‌باشد. توسعه و طراحی توسط ترنم کمالی پناه
             </p>
             <div className="flex items-center space-x-6 space-x-reverse text-sm text-gray-400">
               <a href="/terms" className="hover:text-purple-400 transition-colors">قوانین و مقررات</a>

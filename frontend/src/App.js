@@ -27,6 +27,8 @@ const AdminUsers = lazy(() => import('./pages/AdminUsers'));
 const OrderTracking = lazy(() => import('./pages/OrderTracking'));
 const FAQ = lazy(() => import('./pages/FAQ'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
+const TermsPage = lazy(() => import('./pages/TermsPage'));
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
 
 function App() {
   return (
@@ -61,6 +63,8 @@ function App() {
                       <Route path="/order-tracking" element={<OrderTracking />} />
                       <Route path="/faq" element={<FAQ />} />
                       <Route path="/contact" element={<ContactPage />} />
+                      <Route path="/terms" element={<TermsPage />} />
+                      <Route path="/privacy" element={<PrivacyPage />} />
                       
                       {/* Admin Routes */}
                       <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />

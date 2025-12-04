@@ -179,10 +179,17 @@ export const CartProvider = ({ children }) => {
       if (isAuthenticated) {
         // برای کاربران احراز هویت شده، از API استفاده کن
         const cartData = await cartService.addToCart(productId, quantity);
-        dispatch({
-          type: CART_ACTIONS.ADD_TO_CART_SUCCESS,
-          payload: cartData,
-        });
+        
+        // اگر response شامل items بود، از اون استفاده کن
+        if (cartData && cartData.items) {
+          dispatch({
+            type: CART_ACTIONS.ADD_TO_CART_SUCCESS,
+            payload: cartData,
+          });
+        } else {
+          // در غیر این صورت، سبد خرید رو دوباره fetch کن
+          await fetchCart();
+        }
         return cartData;
       } else {
         // برای کاربران غیر احراز هویت شده، در localStorage ذخیره کن
@@ -327,16 +334,27 @@ export const CartProvider = ({ children }) => {
 
   // تابع بررسی وجود محصول در سبد
   const isInCart = (productId) => {
-    return state.cartItems.some(
-      item => item.product?.id === productId || item.product_id === productId
-    );
+    if (!productId || !state.cartItems || state.cartItems.length === 0) {
+      return false;
+    }
+    
+    return state.cartItems.some(item => {
+      const itemProductId = item.product?.id || item.product_id;
+      return itemProductId === productId;
+    });
   };
 
   // تابع دریافت تعداد یک محصول در سبد
   const getItemQuantity = (productId) => {
-    const item = state.cartItems.find(
-      item => item.product?.id === productId || item.product_id === productId
-    );
+    if (!productId || !state.cartItems || state.cartItems.length === 0) {
+      return 0;
+    }
+    
+    const item = state.cartItems.find(item => {
+      const itemProductId = item.product?.id || item.product_id;
+      return itemProductId === productId;
+    });
+    
     return item ? item.quantity : 0;
   };
 

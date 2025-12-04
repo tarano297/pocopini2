@@ -14,11 +14,15 @@ const ProductCard = ({ product, className = '' }) => {
     e.preventDefault();
     e.stopPropagation();
     
+    if (isLoading) return; // جلوگیری از کلیک مکرر
+    
     setIsLoading(true);
     try {
       await addToCart(product.id, 1);
+      // موفقیت‌آمیز بود، state به‌روز شده
     } catch (error) {
       console.error('خطا در افزودن به سبد خرید:', error);
+      alert('خطا در افزودن به سبد خرید');
     } finally {
       setIsLoading(false);
     }
@@ -49,6 +53,11 @@ const ProductCard = ({ product, className = '' }) => {
 
   const inCart = isInCart(product.id);
   const quantity = getItemQuantity(product.id);
+
+  // Debug: بررسی وضعیت
+  React.useEffect(() => {
+    console.log(`Product ${product.id} - inCart: ${inCart}, quantity: ${quantity}`);
+  }, [inCart, quantity, product.id]);
 
   return (
     <div className={`bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden ${className}`}>

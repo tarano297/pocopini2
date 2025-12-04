@@ -30,6 +30,7 @@ const ContactPage = lazy(() => import('./pages/ContactPage'));
 const TermsPage = lazy(() => import('./pages/TermsPage'));
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
+const GiftGuide = lazy(() => import('./pages/GiftGuide'));
 
 function App() {
   return (
@@ -67,6 +68,7 @@ function App() {
                       <Route path="/about" element={<AboutPage />} />
                       <Route path="/terms" element={<TermsPage />} />
                       <Route path="/privacy" element={<PrivacyPage />} />
+                      <Route path="/gift-guide" element={<GiftGuide />} />
                       
                       {/* Admin Routes */}
                       <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />

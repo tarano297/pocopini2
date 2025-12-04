@@ -892,8 +892,18 @@ const Home = () => {
 
             <div className="order-1 lg:order-2">
               <div className="relative">
-                <div className="bg-gradient-to-br from-coral/20 to-primary/20 rounded-3xl p-12 text-center animate-float-slow">
-                  <div className="text-9xl mb-4">🎁</div>
+                <div className="bg-gradient-to-br from-coral/20 to-primary/20 rounded-3xl p-6 text-center animate-float-slow overflow-hidden">
+                  {/* تصویر هدیه */}
+                  <div className="mb-4 flex justify-center items-center">
+                    <img 
+                      src="/images/pexels-vika-glitter-392079-1620760-removebg-preview.png" 
+                      alt="بسته‌بندی هدیه" 
+                      className="w-full h-auto max-w-md object-contain drop-shadow-2xl"
+                      style={{
+                        filter: 'drop-shadow(0 10px 30px rgba(0,0,0,0.15))'
+                      }}
+                    />
+                  </div>
                   <div className="text-2xl font-bold text-gray-800">پیشنهاد ویژه</div>
                   <div className="text-lg text-gray-600 mt-2">بسته‌بندی هدیه رایگان</div>
                 </div>

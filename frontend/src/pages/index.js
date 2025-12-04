@@ -8,3 +8,4 @@ export { default as Cart } from './Cart';
 export { default as Checkout } from './Checkout';
 export { default as Profile } from './Profile';
 export { default as AddressManagement } from './AddressManagement';
+export { default as AboutPage } from './AboutPage';

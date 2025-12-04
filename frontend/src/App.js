@@ -29,6 +29,7 @@ const FAQ = lazy(() => import('./pages/FAQ'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const TermsPage = lazy(() => import('./pages/TermsPage'));
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
 
 function App() {
   return (
@@ -63,6 +64,7 @@ function App() {
                       <Route path="/order-tracking" element={<OrderTracking />} />
                       <Route path="/faq" element={<FAQ />} />
                       <Route path="/contact" element={<ContactPage />} />
+                      <Route path="/about" element={<AboutPage />} />
                       <Route path="/terms" element={<TermsPage />} />
                       <Route path="/privacy" element={<PrivacyPage />} />
                       

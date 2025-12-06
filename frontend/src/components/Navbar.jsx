@@ -12,7 +12,6 @@ const Navbar = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchTerm.trim()) {
-      // هدایت به صفحه جستجو
       window.location.href = `/products?search=${encodeURIComponent(searchTerm)}`;
       setIsSearchOpen(false);
       setSearchTerm('');
@@ -55,10 +54,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-20">
           {/* منوی سمت راست */}
           <div className="hidden lg:flex items-center space-x-8 space-x-reverse flex-1">
-            <a 
-              href="/" 
-              className="relative text-gray-700 hover:text-coral text-sm font-semibold transition-colors group"
-            >
+            <a href="/" className="relative text-gray-700 hover:text-coral text-sm font-semibold transition-colors group">
               خانه
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-coral group-hover:w-full transition-all duration-300"></span>
             </a>
@@ -70,87 +66,47 @@ const Navbar = () => {
                 </svg>
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-coral group-hover:w-full transition-all duration-300"></span>
               </button>
-              {/* منوی کشویی */}
               <div className="absolute right-0 mt-2 w-[500px] bg-white rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 border border-gray-100">
                 <div className="grid grid-cols-2 divide-x divide-x-reverse divide-gray-100">
-                  {/* دخترانه */}
                   <div className="p-4">
                     <div className="flex items-center mb-3 pb-2 border-b border-gray-100">
                       <span className="text-2xl ml-2">👧</span>
                       <h3 className="font-bold text-gray-900">دخترانه</h3>
                     </div>
                     <div className="space-y-1">
-                      <a href="/products?category=girl&type=blouse" className="block px-3 py-2 text-sm text-gray-700 hover:bg-pink-50 hover:text-coral rounded-lg transition-colors">
-                        بلوز
-                      </a>
-                      <a href="/products?category=girl&type=blouse-pants" className="block px-3 py-2 text-sm text-gray-700 hover:bg-pink-50 hover:text-coral rounded-lg transition-colors">
-                        بلوز شلوار
-                      </a>
-                      <a href="/products?category=girl&type=dress" className="block px-3 py-2 text-sm text-gray-700 hover:bg-pink-50 hover:text-coral rounded-lg transition-colors">
-                        شومیز
-                      </a>
-                      <a href="/products?category=girl&type=vest-skirt" className="block px-3 py-2 text-sm text-gray-700 hover:bg-pink-50 hover:text-coral rounded-lg transition-colors">
-                        جلیقه و شلوار
-                      </a>
-                      <a href="/products?category=girl&type=vest" className="block px-3 py-2 text-sm text-gray-700 hover:bg-pink-50 hover:text-coral rounded-lg transition-colors">
-                        جلیقه
-                      </a>
-                      <a href="/products?category=girl&type=cardigan" className="block px-3 py-2 text-sm text-gray-700 hover:bg-pink-50 hover:text-coral rounded-lg transition-colors">
-                        کاپشن
-                      </a>
-                      <a href="/products?category=girl&type=baft" className="block px-3 py-2 text-sm text-gray-700 hover:bg-pink-50 hover:text-coral rounded-lg transition-colors">
-                        بافت
-                      </a>
-                      <a href="/products?category=girl&type=shawl-hat" className="block px-3 py-2 text-sm text-gray-700 hover:bg-pink-50 hover:text-coral rounded-lg transition-colors">
-                        شال و کلاه
-                      </a>
-                      <a href="/products?category=girl&type=skirt" className="block px-3 py-2 text-sm text-gray-700 hover:bg-pink-50 hover:text-coral rounded-lg transition-colors">
-                        زیله
-                      </a>
+                      <a href="/products?category=girl&type=blouse" className="block px-3 py-2 text-sm text-gray-700 hover:bg-pink-50 hover:text-coral rounded-lg transition-colors">بلوز</a>
+                      <a href="/products?category=girl&type=blouse-pants" className="block px-3 py-2 text-sm text-gray-700 hover:bg-pink-50 hover:text-coral rounded-lg transition-colors">بلوز شلوار</a>
+                      <a href="/products?category=girl&type=dress" className="block px-3 py-2 text-sm text-gray-700 hover:bg-pink-50 hover:text-coral rounded-lg transition-colors">شومیز</a>
+                      <a href="/products?category=girl&type=vest-skirt" className="block px-3 py-2 text-sm text-gray-700 hover:bg-pink-50 hover:text-coral rounded-lg transition-colors">جلیقه و شلوار</a>
+                      <a href="/products?category=girl&type=vest" className="block px-3 py-2 text-sm text-gray-700 hover:bg-pink-50 hover:text-coral rounded-lg transition-colors">جلیقه</a>
+                      <a href="/products?category=girl&type=cardigan" className="block px-3 py-2 text-sm text-gray-700 hover:bg-pink-50 hover:text-coral rounded-lg transition-colors">کاپشن</a>
+                      <a href="/products?category=girl&type=baft" className="block px-3 py-2 text-sm text-gray-700 hover:bg-pink-50 hover:text-coral rounded-lg transition-colors">بافت</a>
+                      <a href="/products?category=girl&type=shawl-hat" className="block px-3 py-2 text-sm text-gray-700 hover:bg-pink-50 hover:text-coral rounded-lg transition-colors">شال و کلاه</a>
+                      <a href="/products?category=girl&type=skirt" className="block px-3 py-2 text-sm text-gray-700 hover:bg-pink-50 hover:text-coral rounded-lg transition-colors">زیله</a>
                     </div>
                   </div>
-                  
-                  {/* پسرانه */}
                   <div className="p-4">
                     <div className="flex items-center mb-3 pb-2 border-b border-gray-100">
                       <span className="text-2xl ml-2">👦</span>
                       <h3 className="font-bold text-gray-900">پسرانه</h3>
                     </div>
                     <div className="space-y-1">
-                      <a href="/products?category=boy&type=blouse" className="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-coral rounded-lg transition-colors">
-                        بلوز
-                      </a>
-                      <a href="/products?category=boy&type=blouse-pants" className="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-coral rounded-lg transition-colors">
-                        بلوز شلوار
-                      </a>
-                      <a href="/products?category=boy&type=pants" className="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-coral rounded-lg transition-colors">
-                        شلوار
-                      </a>
-                      <a href="/products?category=boy&type=sweatshirt" className="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-coral rounded-lg transition-colors">
-                        سویشرت
-                      </a>
-                      <a href="/products?category=boy&type=coat-pants" className="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-coral rounded-lg transition-colors">
-                        کت و شلوار
-                      </a>
-                      <a href="/products?category=boy&type=overall" className="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-coral rounded-lg transition-colors">
-                        سرهمی
-                      </a>
+                      <a href="/products?category=boy&type=blouse" className="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-coral rounded-lg transition-colors">بلوز</a>
+                      <a href="/products?category=boy&type=blouse-pants" className="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-coral rounded-lg transition-colors">بلوز شلوار</a>
+                      <a href="/products?category=boy&type=pants" className="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-coral rounded-lg transition-colors">شلوار</a>
+                      <a href="/products?category=boy&type=sweatshirt" className="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-coral rounded-lg transition-colors">سویشرت</a>
+                      <a href="/products?category=boy&type=coat-pants" className="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-coral rounded-lg transition-colors">کت و شلوار</a>
+                      <a href="/products?category=boy&type=overall" className="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-coral rounded-lg transition-colors">سرهمی</a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <a 
-              href="/order-tracking" 
-              className="relative text-gray-700 hover:text-coral text-sm font-semibold transition-colors group"
-            >
+            <a href="/order-tracking" className="relative text-gray-700 hover:text-coral text-sm font-semibold transition-colors group">
               پیگیری سفارشات
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-coral group-hover:w-full transition-all duration-300"></span>
             </a>
-            <a 
-              href="/about" 
-              className="relative text-gray-700 hover:text-coral text-sm font-semibold transition-colors group"
-            >
+            <a href="/about" className="relative text-gray-700 hover:text-coral text-sm font-semibold transition-colors group">
               درباره ما
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-coral group-hover:w-full transition-all duration-300"></span>
             </a>
@@ -159,17 +115,12 @@ const Navbar = () => {
           {/* لوگو در وسط */}
           <div className="flex items-center justify-center flex-shrink-0">
             <a href="/" className="flex items-center">
-              <img 
-                src="/images/لوگو.jpg" 
-                alt="پوکوپینی" 
-                className="h-12 w-auto"
-              />
+              <img src="/images/لوگو.jpg" alt="پوکوپینی" className="h-12 w-auto"/>
             </a>
           </div>
 
           {/* منوی سمت چپ */}
           <div className="hidden lg:flex items-center space-x-6 space-x-reverse flex-1 justify-end">
-            {/* سبد خرید */}
             <a href="/cart" className="relative p-2.5 text-gray-700 hover:text-coral transition-all hover:bg-coral/10 rounded-full group">
               <svg className="w-5 h-5 transform group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
@@ -181,7 +132,6 @@ const Navbar = () => {
               )}
             </a>
 
-            {/* ورود/خروج */}
             {isAuthenticated ? (
               <div className="relative">
                 <button
@@ -198,7 +148,6 @@ const Navbar = () => {
                   </svg>
                 </button>
 
-                {/* منوی کاربر */}
                 {isMenuOpen && (
                   <div className="absolute left-0 mt-3 w-52 bg-white rounded-xl shadow-2xl z-50 border border-gray-100">
                     <div className="py-2">
@@ -249,18 +198,8 @@ const Navbar = () => {
               </div>
             ) : (
               <div className="flex items-center space-x-3 space-x-reverse">
-                <a
-                  href="/login"
-                  className="text-gray-700 hover:text-coral text-sm font-medium transition-colors"
-                >
-                  ورود
-                </a>
-                <a
-                  href="/register"
-                  className="bg-gradient-to-r from-coral to-primary text-white px-6 py-2.5 rounded-full text-sm font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"
-                >
-                  ثبت‌نام
-                </a>
+                <a href="/login" className="text-gray-700 hover:text-coral text-sm font-medium transition-colors">ورود</a>
+                <a href="/register" className="bg-gradient-to-r from-coral to-primary text-white px-6 py-2.5 rounded-full text-sm font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300">ثبت‌نام</a>
               </div>
             )}
           </div>
@@ -279,77 +218,78 @@ const Navbar = () => {
             </svg>
           </button>
         </div>
+      </div>
 
-        {/* منوی موبایل */}
-        {isMenuOpen && (
-          <div className="lg:hidden border-t border-gray-100">
-            <div className="px-4 pt-4 pb-6 space-y-3 bg-white">
-              {/* جستجو در موبایل */}
-              <form onSubmit={handleSearch} className="mb-4">
-                <div className="relative">
-                  <input
-                    type="text"
-                    placeholder="جستجو..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-full focus:outline-none focus:border-coral transition-colors bg-gray-50"
-                  />
-                  <button
-                    type="submit"
-                    className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-coral"
-                  >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                  </button>
-                </div>
-              </form>
-
-              <a href="/" className="block px-4 py-3 text-base font-medium text-gray-700 hover:text-coral hover:bg-pastel-pink/20 rounded-lg transition-colors">
-                خانه
-              </a>
-              
-              <div className="space-y-2">
-                <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase">دسته‌بندی‌ها</div>
-                <a href="/products?category=baby" className="flex items-center px-4 py-3 text-base font-medium text-gray-700 hover:text-coral hover:bg-pastel-pink/20 rounded-lg transition-colors">
-                  <span className="text-xl ml-3">👶</span>
-                  نوزاد
-                </a>
-                <a href="/products?category=girl" className="flex items-center px-4 py-3 text-base font-medium text-gray-700 hover:text-coral hover:bg-pastel-pink/20 rounded-lg transition-colors">
-                  <span className="text-xl ml-3">👧</span>
-                  دخترانه
-                </a>
-                <a href="/products?category=boy" className="flex items-center px-4 py-3 text-base font-medium text-gray-700 hover:text-coral hover:bg-pastel-pink/20 rounded-lg transition-colors">
-                  <span className="text-xl ml-3">👦</span>
-                  پسرانه
-                </a>
-              </div>
-
-              <hr className="my-4 border-gray-100" />
-
-              <a href="/order-tracking" className="block px-4 py-3 text-base font-medium text-gray-700 hover:text-coral hover:bg-pastel-pink/20 rounded-lg transition-colors">
-                پیگیری سفارشات
-              </a>
-              <a href="/about" className="block px-4 py-3 text-base font-medium text-gray-700 hover:text-coral hover:bg-pastel-pink/20 rounded-lg transition-colors">
-                درباره ما
-              </a>
-              <a href="/contact" className="block px-4 py-3 text-base font-medium text-gray-700 hover:text-coral hover:bg-pastel-pink/20 rounded-lg transition-colors">
-                تماس با ما
-              </a>
-
-              {!isAuthenticated && (
-                <div className="pt-4 space-y-2">
-                  <a href="/login" className="block text-center px-4 py-3 text-base font-medium text-gray-700 border border-gray-200 rounded-full hover:border-coral hover:text-coral transition-colors">
-                    ورود
-                  </a>
-                  <a href="/register" className="block text-center px-4 py-3 text-base font-medium text-white bg-coral rounded-full hover:bg-primary transition-colors">
-                    ثبت‌نام
-                  </a>
-                </div>
-              )}
-            </div>
+      {/* منوی موبایل - Sidebar */}
+      <div className={`lg:hidden fixed inset-y-0 right-0 w-80 bg-white shadow-2xl transform transition-transform duration-300 ease-in-out z-50 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className="h-full overflow-y-auto">
+          {/* هدر منو */}
+          <div className="flex items-center justify-between p-4 border-b border-gray-100 bg-gradient-to-r from-coral to-primary">
+            <h2 className="text-lg font-bold text-white">منو</h2>
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="p-2 text-white hover:bg-white/20 rounded-full transition-colors"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
           </div>
-        )}
+
+          <div className="px-4 pt-4 pb-6 space-y-3">
+            {/* جستجو در موبایل */}
+            <form onSubmit={handleSearch} className="mb-4">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="جستجو..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-full focus:outline-none focus:border-coral transition-colors bg-gray-50"
+                />
+                <button
+                  type="submit"
+                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-coral"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </button>
+              </div>
+            </form>
+
+            <a href="/" className="block px-4 py-3 text-base font-medium text-gray-700 hover:text-coral hover:bg-pastel-pink/20 rounded-lg transition-colors">خانه</a>
+            
+            <div className="space-y-2">
+              <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase">دسته‌بندی‌ها</div>
+              <a href="/products?category=baby" className="flex items-center px-4 py-3 text-base font-medium text-gray-700 hover:text-coral hover:bg-pastel-pink/20 rounded-lg transition-colors">
+                <span className="text-xl ml-3">👶</span>
+                نوزاد
+              </a>
+              <a href="/products?category=girl" className="flex items-center px-4 py-3 text-base font-medium text-gray-700 hover:text-coral hover:bg-pastel-pink/20 rounded-lg transition-colors">
+                <span className="text-xl ml-3">👧</span>
+                دخترانه
+              </a>
+              <a href="/products?category=boy" className="flex items-center px-4 py-3 text-base font-medium text-gray-700 hover:text-coral hover:bg-pastel-pink/20 rounded-lg transition-colors">
+                <span className="text-xl ml-3">👦</span>
+                پسرانه
+              </a>
+            </div>
+
+            <hr className="my-4 border-gray-100" />
+
+            <a href="/order-tracking" className="block px-4 py-3 text-base font-medium text-gray-700 hover:text-coral hover:bg-pastel-pink/20 rounded-lg transition-colors">پیگیری سفارشات</a>
+            <a href="/about" className="block px-4 py-3 text-base font-medium text-gray-700 hover:text-coral hover:bg-pastel-pink/20 rounded-lg transition-colors">درباره ما</a>
+            <a href="/contact" className="block px-4 py-3 text-base font-medium text-gray-700 hover:text-coral hover:bg-pastel-pink/20 rounded-lg transition-colors">تماس با ما</a>
+
+            {!isAuthenticated && (
+              <div className="pt-4 space-y-2">
+                <a href="/login" className="block text-center px-4 py-3 text-base font-medium text-gray-700 border border-gray-200 rounded-full hover:border-coral hover:text-coral transition-colors">ورود</a>
+                <a href="/register" className="block text-center px-4 py-3 text-base font-medium text-white bg-coral rounded-full hover:bg-primary transition-colors">ثبت‌نام</a>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
 
       {/* overlay برای بستن منو */}
@@ -396,9 +336,7 @@ const Navbar = () => {
                   </svg>
                 </button>
               </div>
-              <div className="mt-4 text-sm text-gray-500 text-center">
-                برای جستجو Enter را فشار دهید
-              </div>
+              <div className="mt-4 text-sm text-gray-500 text-center">برای جستجو Enter را فشار دهید</div>
             </form>
           </div>
         </div>
